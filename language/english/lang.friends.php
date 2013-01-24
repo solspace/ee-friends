@@ -1,14 +1,15 @@
 <?php
 
- /**
- * Solspace - Friends
+/**
+ * Friends - Language
  *
  * @package		Solspace:Friends
- * @author		Solspace DevTeam
- * @copyright	Copyright (c) 2008-2012, Solspace, Inc.
- * @link		http://www.solspace.com/docs/addon/c/Friends/
- * @version		1.5.8
- * @filesource 	./system/expressionengine/third_party/friends/language/english/
+ * @author		Solspace, Inc.
+ * @copyright	Copyright (c) 2010-2013, Solspace, Inc.
+ * @link		http://solspace.com/docs/friends
+ * @license		http://www.solspace.com/license_agreement
+ * @version		1.6.0
+ * @filesource	friends/language/english/lang.friends.php
  */
 
 $L = $lang = array(
@@ -21,7 +22,7 @@ $L = $lang = array(
 "Friends",
 
 "friends_module_description" =>
-"The best module ever created!",
+"Social networking for ExpressionEngine",
 
 //----------------------------------------
 //  Main Menu
