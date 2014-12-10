@@ -1,15 +1,17 @@
 <?php
 
- /**
- * Solspace - Friends
+/**
+ * Friends - Brazilian Portuguese Language
  *
  * @package		Solspace:Friends
- * @author		Solspace DevTeam
- * @copyright	Copyright (c) 2008-2012, Solspace, Inc.
- * @link		http://www.solspace.com/docs/addon/c/Friends/
+ * @author		Solspace, Inc.
+ * @copyright	Copyright (c) 2010-2014, Solspace, Inc.
+ * @link		http://solspace.com/docs/friends
+ * @license		http://www.solspace.com/license_agreement
  * @version		1.5.8
- * @translated to English by MarchiMedia
- * @filesource 	./system/expressionengine/third_party/friends/language/english/
+ * @filesource	friends/language/brazilian/lang.friends.php
+ *
+ * Translated to Brazilian Portuguese by MarchiMedia
  */
 
 $L = $lang = array(
