@@ -1,0 +1,62 @@
+{embed="%prefix%inc/index" page_title="Invite New Friends"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Invite New Friends</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+				<h5>Invite your friends to this site!</h5>
+				<p>Enter the email addresses of your friends in the field below separated by commas or line breaks.</p>
+				<hr />
+{exp:friends:invite_form
+	return="%prefix%main/invite"
+	notification_invite="%prefix%notifications/site_invite"
+	subject_invite="{friends_inviter_screen_name} would like you to join the {site_name} site!"
+	notification_request="%prefix%notifications/friend_request"
+	notification_confirm="%prefix%notifications/friend_confirm"
+	subject_request="{friends_inviter_screen_name} has added you as a Friend!"
+	subject_confirm="{friends_inviter_screen_name} has confirmed you as a Friend!"
+	notification_group_invite="%prefix%notifications/group_invite"
+	subject_group_invite="{friends_owner_screen_name} would like you to join their group"
+}
+				<p>Emails:<br /><textarea name="friends_emails" rows="10" cols="50" style="width: 450px; height: 200px;"></textarea></p>
+				<p>Group (optional): <select name="friends_group_id"><option>Select Group</option>{groups}<option value="{friends_group_id}">{friends_group_title}</option>{/groups}</select></p>
+				<hr />
+				<p><input type="submit" name="submit" value="Invite Friends!" />
+{/exp:friends:invite_form}
+{exp:friends:referral_check interval="10"}
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Invite New Friends" page allows the currently logged in user to invite both new and existing site members to be friends.</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/invite_form/">Friends:Invite_Form</a> to display a form for a user to invite friends.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

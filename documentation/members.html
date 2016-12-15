@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Members | Friends | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Friends</a></li>
+						<li>Members</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="https://solspace.com/expressionengine/friends">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3></li>
+<li><p>Basic:</p>
+
+<ul>
+<li><a href="add.html">Add</a></li>
+<li><a href="form.html">Form</a></li>
+<li><a href="hug.html">Hug</a></li>
+<li><a href="hugs.html">Hugs</a></li>
+<li><a href="invites.html">Invites</a></li>
+<li class="current"><a href="members.html">Members</a></li>
+<li><a href="mine.html">Mine</a></li>
+<li><a href="mutual_friends.html">Mutual Friends</a></li>
+</ul></li>
+<li><p>Profile Wall:</p>
+
+<ul>
+<li><a href="profile_wall.html">Profile Wall</a></li>
+<li><a href="profile_wall_comment_delete.html">Profile Wall Comment Delete</a></li>
+<li><a href="profile_wall_form.html">Profile Wall Form</a></li>
+</ul></li>
+<li><p>Status Updates:</p>
+
+<ul>
+<li><a href="status.html">Status</a></li>
+<li><a href="status_delete.html">Status Delete</a></li>
+<li><a href="status_form.html">Status Form</a></li>
+</ul></li>
+<li><p>Groups:</p>
+
+<ul>
+<li><a href="groups.html">Groups</a></li>
+<li><a href="group_add.html">Group Add</a></li>
+<li><a href="group_delete.html">Group Delete</a></li>
+<li><a href="group_entries.html">Group Entries</a></li>
+<li><a href="group_entry_add.html">Group Entry Add</a></li>
+<li><a href="group_form.html">Group Form</a></li>
+<li><a href="group_members.html">Group Members</a></li>
+<li><a href="member_of_group.html">Member Of Group</a></li>
+<li><a href="group_wall.html">Group Wall</a></li>
+<li><a href="group_wall_comment_delete.html">Group Wall Comment Delete</a></li>
+<li><a href="group_wall_form.html">Group Wall Form</a></li>
+</ul></li>
+<li><p>Messages:</p>
+
+<ul>
+<li><a href="messages.html">Messages</a></li>
+<li><a href="message_delete.html">Message Delete</a></li>
+<li><a href="message_folders.html">Message Folders</a></li>
+<li><a href="message_folder_form.html">Message Folder Form</a></li>
+<li><a href="message_folder_name.html">Message Folder Name</a></li>
+<li><a href="message_form.html">Message Form</a></li>
+<li><a href="message_move.html">Message Move</a></li>
+</ul></li>
+<li><p>Referrals:</p>
+
+<ul>
+<li><a href="referral_invite_form.html">Referral Invite Form</a></li>
+<li><a href="referral_referral_count.html">Referral Count</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<p>The <em>Friends:Members</em> function allows you to display a list of all your
+members. Basically, it allows you to display a member list. The general
+usage for this is to create a list for your users to look at and
+add/invite other users as friends as they please.</p>
+
+<p>This function can also serve as an individual profile page for viewing
+more information about a given member.</p>
+
+<pre class="brush: html;">{exp:friends:members} content {/exp:friends:members}</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#variable_pairs">Variable Pairs</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#dynamic">dynamic</a></li>
+<li><a href="#limit">limit</a></li>
+<li><a href="#member_id">member_id</a></li>
+<li><a href="#member_group_id">member_group_id</a></li>
+<li><a href="#orderby">orderby</a></li>
+<li><a href="#paginate">paginate</a></li>
+<li><a href="#search_screen_name">search_screen_name</a></li>
+<li><a href="#search_username">search_username</a></li>
+<li><a href="#sort">sort</a></li>
+<li><a href="#username">username</a></li>
+</ul>
+
+<p><a name="dynamic"></a></p>
+
+<h3>dynamic=</h3>
+
+<pre class="brush: html;">dynamic="off"</pre>
+
+<p>This parameter is available to stop the loop from looking into
+the URI for an ID of any type.</p>
+
+<p><a name="limit"></a></p>
+
+<h3>limit=</h3>
+
+<pre class="brush: html;">limit="10"</pre>
+
+<p>This parameter controls how many results will be outputted. The
+limit will default to <strong>100</strong> members if a value is not specified.</p>
+
+<p><a name="member_id"></a></p>
+
+<h3>member_id=</h3>
+
+<pre class="brush: html;">member_id="{segment_3}"</pre>
+
+<p>This parameter allows you to view an individual profile of a
+member by specifying their member ID. You can hardcode a member ID, pass
+it through an embed, grab it from the URI, or specify <strong>CURRENT_USER</strong> to
+display the profile of the currently logged in user. If neither the
+<em>member_id</em> or <a href="#username">username</a> parameter is specified, the
+Members loop will display a list of <strong>all</strong> members.</p>
+
+<p><a name="member_group_id"></a></p>
+
+<h3>member_group_id=</h3>
+
+<pre class="brush: html;">member_group_id="5|6|9"</pre>
+
+<p>This parameter allows you to filter the list of
+members by one or more member group ID's. Separate multiple groups with
+the pipe (<strong>|</strong>) character.</p>
+
+<p><a name="orderby"></a></p>
+
+<h3>orderby=</h3>
+
+<pre class="brush: html;">orderby="screen_name"</pre>
+
+<p>This parameter gives you the ability to control the order in
+which your results are ordered in the list. You can order by any
+variable that you can parse on as well as <strong>random</strong>.</p>
+
+<p><a name="paginate"></a></p>
+
+<h3>paginate=</h3>
+
+<pre class="brush: html;">paginate="both"</pre>
+
+<p>This parameter allows you to control where the pagination will
+display. Options are <strong>top</strong>, <strong>bottom</strong>, or <strong>both</strong>. Used in conjunction with the <a href="#friends_paginate">friends_paginate</a> variable pair.</p>
+
+<p><a name="search_screen_name"></a></p>
+
+<h3>search_screen_name=</h3>
+
+<pre class="brush: html;">search_screen_name="ja"</pre>
+
+<p>This parameter allows you to filter the member
+list by those members who share the same first few letters of their
+screen name. For example, if you specify <strong>ja</strong> in the parameter, your
+results may be <em>Jason</em>, <em>Janet</em>, <em>Jared</em>, etc. It's not necessary to
+specify this parameter though. If you have an additional segment in the
+URI named <em>screen_name</em>, followed by a value, the search will be
+performed automatically, as long as the <a href="#dynamic">dynamic</a> parameter is
+NOT set to <strong>off</strong>.</p>
+
+<p><a name="search_username"></a></p>
+
+<h3>search_username=</h3>
+
+<pre class="brush: html;">search_username="fur"</pre>
+
+<p>This parameter allows you to filter the member list by
+those members who share the same first few letters of their username.
+For example, if you specify <strong>fur</strong> in the parameter, your results may be
+<em>furly</em>, <em>furby</em>, <em>furnace_eater</em>, etc. It's not necessary to specify
+this parameter though. If you have an additional segment in the URI
+named <em>username</em>, followed by a value, the search will be performed
+automatically, as long as the <a href="#dynamic">dynamic</a> parameter is NOT set
+to <strong>off</strong>.</p>
+
+<p><a name="sort"></a></p>
+
+<h3>sort=</h3>
+
+<pre class="brush: html;">sort="desc"</pre>
+
+<p>You can sort by <strong>asc</strong> or <strong>desc</strong>.</p>
+
+<p><a name="username"></a></p>
+
+<h3>username=</h3>
+
+<pre class="brush: html;">username="{segment_3}"</pre>
+
+<p>This parameter allows you to view an individual profile of a
+member by specifying their username. You can hardcode a username, pass
+it through an embed, grab it from the URI, or specify <strong>CURRENT_USER</strong> to
+display the profile of the currently logged in user. If neither the
+<a href="member_id.html">member_id</a> or <em>username</em> parameter is specified, the
+Members loop will display a list of <strong>all</strong> members.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>All standard and custom member fields are available for use, including
+several extra variables. To parse these member fields, prepend the
+variables with <em>friends&#95;</em>. So to construct these variables, simply use
+<strong>friends&#95;</strong> + <strong>member_field_name</strong>.</p>
+
+<ul>
+<li><a href="#friends_aol_im">friends_aol_im</a></li>
+<li><a href="#friends_avatar_filename">friends_avatar_filename</a></li>
+<li><a href="#friends_avatar_height">friends_avatar_height</a></li>
+<li><a href="#friends_avatar_url">friends_avatar_url</a></li>
+<li><a href="#friends_avatar_width">friends_avatar_width</a></li>
+<li><a href="#friends_bday_d">friends_bday_d</a></li>
+<li><a href="#friends_bday_m">friends_bday_m</a></li>
+<li><a href="#friends_bday_y">friends_bday_y</a></li>
+<li><a href="#friends_birthday">friends_birthday</a></li>
+<li><a href="#friends_bio">friends_bio</a></li>
+<li><a href="#friends_count">friends_count</a></li>
+<li><a href="#friends_daylight_savings">friends_daylight_savings</a></li>
+<li><a href="#friends_email">friends_email</a></li>
+<li><a href="#friends_entry_date">friends_entry_date</a></li>
+<li><a href="#friends_icq">friends_icq</a></li>
+<li><a href="#friends_interests">friends_interests</a></li>
+<li><a href="#friends_ip_address">friends_ip_address</a></li>
+<li><a href="#friends_join_date">friends_join_date</a></li>
+<li><a href="#friends_last_activity">friends_last_activity</a></li>
+<li><a href="#friends_last_bulletin_date">friends_last_bulletin_date</a></li>
+<li><a href="#friends_last_comment_date">friends_last_comment_date</a></li>
+<li><a href="#friends_last_email_date">friends_last_email_date</a></li>
+<li><a href="#friends_last_entry_date">friends_last_entry_date</a></li>
+<li><a href="#friends_last_forum_post_date">friends_last_forum_post_date</a></li>
+<li><a href="#friends_last_rating_date">friends_last_rating_date</a></li>
+<li><a href="#friends_last_view_bulletins">friends_last_view_bulletins</a></li>
+<li><a href="#friends_last_visit">friends_last_visit</a></li>
+<li><a href="#friends_location">friends_location</a></li>
+<li><a href="#friends_member_id">friends_member_id</a></li>
+<li><a href="#friends_member_group_id">friends_member_group_id</a></li>
+<li><a href="#friends_member_group_title">friends_member_group_title</a></li>
+<li><a href="#friends_msn_im">friends_msn_im</a></li>
+<li><a href="#friends_occupation">friends_occupation</a></li>
+<li><a href="#friends_photo_filename">friends_photo_filename</a></li>
+<li><a href="#friends_photo_height">friends_photo_height</a></li>
+<li><a href="#friends_photo_url">friends_photo_url</a></li>
+<li><a href="#friends_photo_width">friends_photo_width</a></li>
+<li><a href="#friends_private_messages">friends_private_messages</a></li>
+<li><a href="#friends_profile_views">friends_profile_views</a></li>
+<li><a href="#friends_reciprocal">friends_reciprocal</a></li>
+<li><a href="#friends_screen_name">friends_screen_name</a></li>
+<li><a href="#friends_signature">friends_signature</a></li>
+<li><a href="#friends_sig_img_filename">friends_sig_img_filename</a></li>
+<li><a href="#friends_sig_img_height">friends_sig_img_height</a></li>
+<li><a href="#friends_sig_img_url">friends_sig_img_url</a></li>
+<li><a href="#friends_sig_img_width">friends_sig_img_width</a></li>
+<li><a href="#friends_switch">friends_switch</a></li>
+<li><a href="#friends_timezone">friends_timezone</a></li>
+<li><a href="#friends_time_format">friends_time_format</a></li>
+<li><a href="#friends_total_blocked_friends">friends_total_blocked_friends</a></li>
+<li><a href="#friends_total_combined_posts">friends_total_combined_posts</a></li>
+<li><a href="#friends_total_comments">friends_total_comments</a></li>
+<li><a href="#friends_total_entries">friends_total_entries</a></li>
+<li><a href="#friends_total_forum_topics">friends_total_forum_topics</a></li>
+<li><a href="#friends_total_forum_posts">friends_total_forum_posts</a></li>
+<li><a href="#friends_total_friends">friends_total_friends</a></li>
+<li><a href="#friends_total_hugs">friends_total_hugs</a></li>
+<li><a href="#friends_total_ratings">friends_total_ratings</a></li>
+<li><a href="#friends_total_reciprocal_friends">friends_total_reciprocal_friends</a></li>
+<li><a href="#friends_total_results">friends_total_results</a></li>
+<li><a href="#friends_url">friends_url</a></li>
+<li><a href="#friends_username">friends_username</a></li>
+<li><a href="#friends_yahoo_im">friends_yahoo_im</a></li>
+<li><a href="#friends_custom_member_field">friends_custom_member_field</a></li>
+</ul>
+
+<p><a name="friends_aol_im"></a></p>
+
+<h3>friends_aol_im</h3>
+
+<pre class="brush: html;">{friends_aol_im}</pre>
+
+<p>This variable outputs the friends AOL instant messenger ID if they've provided one.</p>
+
+<p><a name="friends_avatar_filename"></a></p>
+
+<h3>friends_avatar_filename</h3>
+
+<pre class="brush: html;">{friends_avatar_filename}</pre>
+
+<p>This variable outputs the upload directory path, filename, and file extension of the friends avatar if they have one (ex: <strong>uploads/avatar_1.jpg</strong>).</p>
+
+<p><a name="friends_avatar_height"></a></p>
+
+<h3>friends_avatar_height</h3>
+
+<pre class="brush: html;">{friends_avatar_height}</pre>
+
+<p>This variable outputs the height of the friends avatar (ex: <strong>60</strong>).</p>
+
+<p><a name="friends_avatar_url"></a></p>
+
+<h3>friends_avatar_url</h3>
+
+<pre class="brush: html;">{friends_avatar_url}</pre>
+
+<p>This variable outputs the complete path to the avatar, including the avatar directory path and filename (ex: <strong>http://www.yoursite.com/images/avatars/uploads/avatar_1.jpg</strong>).</p>
+
+<p><a name="friends_avatar_width"></a></p>
+
+<h3>friends_avatar_width</h3>
+
+<pre class="brush: html;">{friends_avatar_width}</pre>
+
+<p>This variable outputs the width of the friends avatar (ex: <strong>80</strong>).</p>
+
+<p><a name="friends_bday_d"></a></p>
+
+<h3>friends_bday_d</h3>
+
+<pre class="brush: html;">{friends_bday_d}</pre>
+
+<p>This variable outputs the friends Birthday day.</p>
+
+<p><a name="friends_bday_m"></a></p>
+
+<h3>friends_bday_m</h3>
+
+<pre class="brush: html;">{friends_bday_m}</pre>
+
+<p>This variable outputs the friends Birthday month.</p>
+
+<p><a name="friends_bday_y"></a></p>
+
+<h3>friends_bday_y</h3>
+
+<pre class="brush: html;">{friends_bday_y}</pre>
+
+<p>This variable outputs the friends Birthday year.</p>
+
+<p><a name="friends_birthday"></a></p>
+
+<h3>friends_birthday</h3>
+
+<pre class="brush: html;">{friends_birthday format="%F %j, %Y"}</pre>
+
+<p>This variable outputs a timestamp value of the birth
+date and allows you to display any date formatting of your choice.</p>
+
+<p><a name="friends_bio"></a></p>
+
+<h3>friends_bio</h3>
+
+<pre class="brush: html;">{friends_bio}</pre>
+
+<p>This variable outputs the friends bio.</p>
+
+<p><a name="friends_count"></a></p>
+
+<h3>friends_count</h3>
+
+<pre class="brush: html;">{friends_count}</pre>
+
+<p>This variable outputs the display order number for each
+result in the list of users. Available within <em>Friends:Members</em> loop.</p>
+
+<p><a name="friends_daylight_savings"></a></p>
+
+<h3>friends_daylight_savings</h3>
+
+<pre class="brush: html;">{friends_daylight_savings}</pre>
+
+<p>This variable outputs a <strong>y</strong> or <strong>n</strong> value of whether or not the friend is observing daylight savings time.</p>
+
+<p>Note: ExpressionEngine 2.6 and later do not have Daylight Savings time settings and this param is no longer supported after ExpressionEngine 2.5.5.</p>
+
+<p><a name="friends_email"></a></p>
+
+<h3>friends_email</h3>
+
+<pre class="brush: html;">{friends_email}</pre>
+
+<p>This variable outputs the friends email address.</p>
+
+<p><a name="friends_entry_date"></a></p>
+
+<h3>friends_entry_date</h3>
+
+<pre class="brush: html;">{friends_entry_date format="%F %j, %Y"}</pre>
+
+<p>This variable displays the date of when the friend request or confirm occurred. This variable will only parse correctly for users that have some type of relationship to the currently logged in user, so it's best to place this into a conditional.</p>
+
+<p><a name="friends_icq"></a></p>
+
+<h3>friends_icq</h3>
+
+<pre class="brush: html;">{friends_icq}</pre>
+
+<p>This variable outputs the friends ICQ instant messenger ID if they've provided one.</p>
+
+<p><a name="friends_interests"></a></p>
+
+<h3>friends_interests</h3>
+
+<pre class="brush: html;">{friends_interests}</pre>
+
+<p>This variable outputs the data a friend has for the <em>Interests</em> field.</p>
+
+<p><a name="friends_ip_address"></a></p>
+
+<h3>friends_ip_address</h3>
+
+<pre class="brush: html;">{friends_ip_address}</pre>
+
+<p>This variable outputs the IP address the friend last accessed the website with.</p>
+
+<p><a name="friends_join_date"></a></p>
+
+<h3>friends_join_date</h3>
+
+<pre class="brush: html;">{friends_join_date format="%F %j, %Y"}</pre>
+
+<p>This variable outputs the friends join date.</p>
+
+<p><a name="friends_last_activity"></a></p>
+
+<h3>friends_last_activity</h3>
+
+<pre class="brush: html;">{friends_last_activity format="%F %j, %Y"}</pre>
+
+<p>This variable outputs the last time the friend was active.</p>
+
+<p><a name="friends_last_bulletin_date"></a></p>
+
+<h3>friends_last_bulletin_date</h3>
+
+<pre class="brush: html;">{friends_last_bulletin_date format="%F %j, %Y"}</pre>
+
+<p>This variable outputs the last time the friend posted a bulletin.</p>
+
+<p><a name="friends_last_comment_date"></a></p>
+
+<h3>friends_last_comment_date</h3>
+
+<pre class="brush: html;">{friends_last_comment_date format="%F %j, %Y"}</pre>
+
+<p>This variable outputs the last time the friend posted a comment.</p>
+
+<p><a name="friends_last_email_date"></a></p>
+
+<h3>friends_last_email_date</h3>
+
+<pre class="brush: html;">{friends_last_email_date format="%F %j, %Y"}</pre>
+
+<p>This variable outputs the last time the friend sent an email via the EE email function.</p>
+
+<p><a name="friends_last_entry_date"></a></p>
+
+<h3>friends_last_entry_date</h3>
+
+<pre class="brush: html;">{friends_last_entry_date format="%F %j, %Y"}</pre>
+
+<p>This variable outputs the last time the friend posted a channel entry.</p>
+
+<p><a name="friends_last_forum_post_date"></a></p>
+
+<h3>friends_last_forum_post_date</h3>
+
+<pre class="brush: html;">{friends_last_forum_post_date format="%F %j, %Y"}</pre>
+
+<p>This variable outputs the last time the friend posted in the forums.</p>
+
+<p><a name="friends_last_rating_date"></a></p>
+
+<h3>friends_last_rating_date</h3>
+
+<pre class="brush: html;">{friends_last_rating_date format="%F %j, %Y"}</pre>
+
+<p>This variable outputs the last time the friend submitted a rating (with
+<a href="https://solspace.com/expressionengine/rating/">Rating</a> module).</p>
+
+<p><a name="friends_last_view_bulletins"></a></p>
+
+<h3>friends_last_view_bulletins</h3>
+
+<pre class="brush: html;">{friends_last_view_bulletins format="%F %j, %Y"}</pre>
+
+<p>This variable outputs the last time the friend viewed a bulletin.</p>
+
+<p><a name="friends_last_visit"></a></p>
+
+<h3>friends_last_visit</h3>
+
+<pre class="brush: html;">{friends_last_visit format="%F %j, %Y"}</pre>
+
+<p>This variable outputs the last time the friend visited the website.</p>
+
+<p><a name="friends_location"></a></p>
+
+<h3>friends_location</h3>
+
+<pre class="brush: html;">{friends_location}</pre>
+
+<p>This variable outputs the data a friend has for the <em>Location</em> field.</p>
+
+<p><a name="friends_member_id"></a></p>
+
+<h3>friends_member_id</h3>
+
+<pre class="brush: html;">{friends_member_id}</pre>
+
+<p>This variable outputs the friends member ID.</p>
+
+<p><a name="friends_member_group_id"></a></p>
+
+<h3>friends_member_group_id</h3>
+
+<pre class="brush: html;">{friends_member_group_id}</pre>
+
+<p>This variable outputs the group ID the friend belongs to.</p>
+
+<p><a name="friends_member_group_title"></a></p>
+
+<h3>friends_member_group_title</h3>
+
+<pre class="brush: html;">{friends_member_group_title}</pre>
+
+<p>This variable outputs the group name the friend belongs to.</p>
+
+<p><a name="friends_msn_im"></a></p>
+
+<h3>friends_msn_im</h3>
+
+<pre class="brush: html;">{friends_msn_im}</pre>
+
+<p>This variable outputs the friends MSN instant messenger ID if they've provided one.</p>
+
+<p><a name="friends_occupation"></a></p>
+
+<h3>friends_occupation</h3>
+
+<pre class="brush: html;">{friends_occupation}</pre>
+
+<p>This variable outputs the data a friend has for the <em>Occupation</em> field.</p>
+
+<p><a name="friends_photo_filename"></a></p>
+
+<h3>friends_photo_filename</h3>
+
+<pre class="brush: html;">{friends_photo_filename}</pre>
+
+<p>This variable outputs the upload directory path, filename, and file extension of the friends member photo if they have one (ex: <strong>uploads/photo_1.jpg</strong>).</p>
+
+<p><a name="friends_photo_height"></a></p>
+
+<h3>friends_photo_height</h3>
+
+<pre class="brush: html;">{friends_photo_height}</pre>
+
+<p>This variable outputs the height of the friends member photo (ex: <strong>60</strong>).</p>
+
+<p><a name="friends_photo_url"></a></p>
+
+<h3>friends_photo_url</h3>
+
+<pre class="brush: html;">{friends_photo_url}</pre>
+
+<p>This variable outputs the complete path to the member photo, including the member photo directory path and filename (ex: <strong>http://www.yoursite.com/images/member_photos/uploads/photo_1.jpg</strong>).</p>
+
+<p><a name="friends_photo_width"></a></p>
+
+<h3>friends_photo_width</h3>
+
+<pre class="brush: html;">{friends_photo_width}</pre>
+
+<p>This variable outputs the width of the friends member photo (ex: <strong>80</strong>).</p>
+
+<p><a name="friends_private_messages"></a></p>
+
+<h3>friends_private_messages</h3>
+
+<pre class="brush: html;">{friends_private_messages}</pre>
+
+<p>This variable outputs the amount of privates messages the friend has.</p>
+
+<p><a name="friends_profile_views"></a></p>
+
+<h3>friends_profile_views</h3>
+
+<pre class="brush: html;">{friends_profile_views}</pre>
+
+<p>This variable shows the number of times that the friends profile has been viewed. Use of the User module <a href="https://solspace.com/legacy_docs/user_3/stats">User:Stats</a> function triggers the counting of a profile view. When you view your own profile it doesn't count.</p>
+
+<p><a name="friends_reciprocal"></a></p>
+
+<h3>friends_reciprocal</h3>
+
+<pre class="brush: html;">{friends_reciprocal}</pre>
+
+<p>This variable determines whether or not a given friend in your list also has you as a friend in their list. It will return either <strong>y</strong> or <strong>n</strong>. You would normally use this as a conditional.</p>
+
+<p><a name="friends_screen_name"></a></p>
+
+<h3>friends_screen_name</h3>
+
+<pre class="brush: html;">{friends_screen_name}</pre>
+
+<p>This variable outputs the friends screen name.</p>
+
+<p><a name="friends_signature"></a></p>
+
+<h3>friends_signature</h3>
+
+<pre class="brush: html;">{friends_signature}</pre>
+
+<p>This variable outputs the text value of the friends signature.</p>
+
+<p><a name="friends_sig_img_filename"></a></p>
+
+<h3>friends_sig_img_filename</h3>
+
+<pre class="brush: html;">{friends_sig_img_filename}</pre>
+
+<p>This variable outputs the upload directory path, filename, and file extension of the friends signature image if they have one (ex: <strong>uploads/signature_1.jpg</strong>).</p>
+
+<p><a name="friends_sig_img_height"></a></p>
+
+<h3>friends_sig_img_height</h3>
+
+<pre class="brush: html;">{friends_sig_img_height}</pre>
+
+<p>This variable outputs the height of the friends signature image (ex: <strong>60</strong>).</p>
+
+<p><a name="friends_sig_img_url"></a></p>
+
+<h3>friends_sig_img_url</h3>
+
+<pre class="brush: html;">{friends_sig_img_url}</pre>
+
+<p>This variable outputs the complete path to the signature image, including the signature images directory path and filename (ex: <strong>http://www.yoursite.com/images/signature_attachments/uploads/signature_1.jpg</strong>).</p>
+
+<p><a name="friends_sig_img_width"></a></p>
+
+<h3>friends_sig_img_width</h3>
+
+<pre class="brush: html;">{friends_sig_img_width}</pre>
+
+<p>This variable outputs the width of the friends signature image (ex: <strong>80</strong>).</p>
+
+<p><a name="friends_switch"></a></p>
+
+<h3>friends_switch</h3>
+
+<pre class="brush: html;">{friends_switch="one|two"}</pre>
+
+<p>This variable allows you to switch a CSS class back and
+fourth for all outputed results. Available within <em>Friends:Members</em>
+loop.</p>
+
+<p><a name="friends_time_format"></a></p>
+
+<h3>friends_time_format</h3>
+
+<pre class="brush: html;">{friends_time_format}</pre>
+
+<p>This variable shows the friends time formating (ex: <strong>us</strong>, <strong>ca</strong>, <strong>uk</strong>).</p>
+
+<p><a name="friends_timezone"></a></p>
+
+<h3>friends_timezone</h3>
+
+<pre class="brush: html;">{friends_timezone}</pre>
+
+<p>This variable shows the friends timezone settings.</p>
+
+<p><a name="friends_total_blocked_friends"></a></p>
+
+<h3>friends_total_blocked_friends</h3>
+
+<pre class="brush: html;">{friends_total_blocked_friends}</pre>
+
+<p>This variable displays the total amount of members a given user has blocked.</p>
+
+<p><a name="friends_total_combined_posts"></a></p>
+
+<h3>friends_total_combined_posts</h3>
+
+<pre class="brush: html;">{friends_total_combined_posts}</pre>
+
+<p>This variable displays the friends total amount of combined posts (ex: forums, channel entries, comments, etc).</p>
+
+<p><a name="friends_total_comments"></a></p>
+
+<h3>friends_total_comments</h3>
+
+<pre class="brush: html;">{friends_total_comments}</pre>
+
+<p>This variable displays the friends total amount of comments.</p>
+
+<p><a name="friends_total_entries"></a></p>
+
+<h3>friends_total_entries</h3>
+
+<pre class="brush: html;">{friends_total_entries}</pre>
+
+<p>This variable displays the friends total amount of channel entries.</p>
+
+<p><a name="friends_total_forum_posts"></a></p>
+
+<h3>friends_total_forum_posts</h3>
+
+<pre class="brush: html;">{friends_total_forum_posts}</pre>
+
+<p>This variable displays the friends total amount of forums posts.</p>
+
+<p><a name="friends_total_forum_topics"></a></p>
+
+<h3>friends_total_forum_topics</h3>
+
+<pre class="brush: html;">{friends_total_forum_topics}</pre>
+
+<p>This variable displays the friends total amount of forums topics.</p>
+
+<p><a name="friends_total_friends"></a></p>
+
+<h3>friends_total_friends</h3>
+
+<pre class="brush: html;">{friends_total_friends}</pre>
+
+<p>This variable displays the total amount of
+friends a member has. It does not take reciprocality into factor here.
+So if a member has 5 confirmed friends, and 3 unconfirmed friend
+requests, it will evaluate as <strong>8</strong>. Use the
+<a href="#friends_total_reciprocal_friends">friends_total_reciprocal_friends</a>
+variable to filter out unconfirmed friend requests from the count.</p>
+
+<p><a name="friends_total_hugs"></a></p>
+
+<h3>friends_total_hugs</h3>
+
+<pre class="brush: html;">{friends_total_hugs}</pre>
+
+<p>This variable displays the total amount of times a
+member has been hugged, using the <a href="hug.html">Friends:Hug</a> function.</p>
+
+<p><a name="friends_total_ratings"></a></p>
+
+<h3>friends_total_ratings</h3>
+
+<pre class="brush: html;">{friends_total_ratings}</pre>
+
+<p>This variable displays the total amount of
+ratings submitted by the friend (with
+<a href="https://solspace.com/expressionengine/rating/">Rating</a> add-on).</p>
+
+<p><a name="friends_total_reciprocal_friends"></a></p>
+
+<h3>friends_total_reciprocal_friends</h3>
+
+<pre class="brush: html;">{friends_total_reciprocal_friends}</pre>
+
+<p>This variable displays the total amount of reciprocal friends a member has. Any unconfirmed friend requests are not factored in here. So if a member has 5 confirmed friends, and 3 unconfirmed friend requests, it will evaluate as <strong>5</strong>. Use the <a href="#friends_total_friends">friends_total_friends</a> variable to
+include unconfirmed friend requests in the count.</p>
+
+<p><a name="friends_total_results"></a></p>
+
+<h3>friends_total_results</h3>
+
+<pre class="brush: html;">{friends_total_results}</pre>
+
+<p>This variable outputs the total amount of results outputted in your list. Available within <em>Friends:Members</em> loop.</p>
+
+<p><a name="friends_url"></a></p>
+
+<h3>friends_url</h3>
+
+<pre class="brush: html;">{friends_url}</pre>
+
+<p>This variable outputs the data a friend has for the <em>URL</em> field.</p>
+
+<p><a name="friends_username"></a></p>
+
+<h3>friends_username</h3>
+
+<pre class="brush: html;">{friends_username}</pre>
+
+<p>This variable outputs the friends username.</p>
+
+<p><a name="friends_yahoo_im"></a></p>
+
+<h3>friends_yahoo_im</h3>
+
+<pre class="brush: html;">{friends_yahoo_im}</pre>
+
+<p>This variable outputs the friends Yahoo instant messenger ID if they've provided one.</p>
+
+<p><a name="friends_custom_member_field"></a></p>
+
+<h3>friends_custom_member_field</h3>
+
+<pre class="brush: html;">{friends_custom_member_field}</pre>
+
+<p>All of custom member fields are available for use. To parse your custom
+member fields, prepend the variables with <em>friends&#95;</em>. So to construct
+these variables, simply use <strong>friends&#95;</strong> +
+<strong>custom_member_field_short_name</strong> (Ex: <strong>friends&#95;</strong> + <strong>favorite_book</strong> =
+<em>friends_favorite_book</em>).</p>
+
+<p><a name="variable_pairs"></a></p>
+
+<h2>Variable Pairs</h2>
+
+<p>The following variable pairs are available for use:</p>
+
+<ul>
+<li><a href="#friends_paginate">friends_paginate</a></li>
+</ul>
+
+<p><a name="friends_paginate"></a></p>
+
+<h3>friends_paginate</h3>
+
+<pre class="brush: html;">{friends_paginate}
+    Page {friends_current_page} of {friends_total_pages} pages
+    {friends_pagination_links}
+{/friends_paginate}
+</pre>
+
+<p>Pagination is available for this tag and works just like regular
+pagination, but each variable is prepended with <em>friends_</em>. Used in
+conjunction with the <a href="#paginate">paginate</a> parameter.</p>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>You can run conditionals on any of the single variables available above.
+Additionally, these are available:</p>
+
+<ul>
+<li><a href="#if_friend">if friend</a></li>
+<li><a href="#if_friends_no_results">if friends_no_results</a></li>
+</ul>
+
+<p><a name="if_friend"></a></p>
+
+<h3>if friend</h3>
+
+<pre class="brush: html;">{if friend == "y"}
+    This member is my friend.
+{/if}
+</pre>
+
+<p>This conditional determines whether or not a given member in
+your list has been added to your friends list. It will return either <strong>y</strong>
+or <strong>n</strong>. You would normally use this as a conditional.</p>
+
+<p><a name="if_friends_no_results"></a></p>
+
+<h3>if friends_no_results</h3>
+
+<pre class="brush: html;">{if friends_no_results}
+    Sorry, no results were found.
+{/if} `
+</pre>
+
+<p>This conditional evaluates to <strong>true</strong> and displays it's contents when there are no results found for this tag.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p>The code below will output a simple list of all members of the current site:</p>
+
+<pre class="brush: html;">&lt;h3&gt;Viewing all Members of this Site&lt;/h3&gt;
+
+&lt;ul&gt;
+{exp:friends:members
+    orderby="screen_name"
+    sort="asc"
+}
+    &lt;li&gt;
+        &lt;a href="{path='friends/profile'}/{friends_member_id}/"&gt;
+            {friends_screen_name}
+        &lt;/a&gt;
+        {if friend == "y"}
+            {if friends_reciprocal == "y"}
+                (already friends)
+            {if:else}
+                (invited)
+            {/if}
+        {if:else}
+            &lt;a href="{path=friends/add}{friends_member_id}/"&gt;
+                Add to Friends
+            &lt;/a&gt;
+        {/if}
+    &lt;/li&gt;
+{/exp:friends:members}
+&lt;/ul&gt;
+</pre>
+
+<p>Below is a sample of what an individual profile or preview page might look like, assuming the members member ID is in the 3rd segment of the URI:</p>
+
+<pre class="brush: html;">{exp:friends:members
+    member_id="{segment_3}"
+}
+
+    &lt;h3&gt;{friends_screen_name}’s Profile&lt;/h3&gt;
+    &lt;p&gt;Email: {friends_email}&lt;/p&gt;
+    &lt;p&gt;Total Entries: {friends_total_entries}&lt;/p&gt;
+    &lt;p&gt;Join Date: {friends_join_date  format="%m %d, %Y"}&lt;/p&gt;
+    &lt;p&gt;
+        {if friend == "y"}
+            {if friends_reciprocal == "y"}
+                (already friends)
+            {if:else}
+                (invited)
+            {/if}
+        {if:else}
+            &lt;a href="{path='friends/add'}/{friends_member_id}/"&gt;
+                Add to Friends
+            &lt;/a&gt;
+        {/if}
+    &lt;/p&gt;
+
+{/exp:friends:members}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

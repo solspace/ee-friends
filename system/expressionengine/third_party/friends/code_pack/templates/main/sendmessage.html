@@ -1,0 +1,48 @@
+{embed="%prefix%inc/index" page_title="{exp:friends:members member_id="{segment_3}" limit="1"}Send {friends_screen_name} a Message{/exp:friends:members}"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>{exp:friends:members member_id="{segment_3}" limit="1"}Send {friends_screen_name} a Message{/exp:friends:members}</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/profile_column"}
+
+			<div id="middlecolumn">
+				{exp:friends:message_form return="%prefix%main/profile/{segment_3}" dynamic="off" notification_template="%prefix%notifications/new_message"}
+				<p>Subject:<br /><input name="friend[]" type="hidden" value="{segment_3}" /><input type="text" name="friends_subject" style="width: 450px;" /></p>
+				<p>Message:<br /><textarea name="friends_message" rows="10" cols="50" style="width: 450px; height: 200px;"></textarea></p>
+				<hr />
+				<p><input type="submit" name="submit" value="Send!" /></p>
+				{/exp:friends:message_form}
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Send Message" page make use of the Private Messaging functionality, and allows the currently logged in user to send a private message to the given user.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/message_form/">Friends:Message_Form</a> to display a preformatted form that allows the currently logged in user to send a private message to the given user.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

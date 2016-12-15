@@ -1,0 +1,61 @@
+<?php if ( count( $members ) == 0 ) : ?>
+	<p><span class="notice"><?=$lang_no_invitees?></span></p>
+<?php else: ?>
+	<form action="<?=$form_uri?>" method="post" id="delete_group_form">
+		<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+		<input type="hidden" name="group_id" value="<?=$group_id?>" />
+		<table id="main_table" class="mainTable padTable magicCheckboxTable"
+			   style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+			<thead>
+			<tr>
+				<th  style="width:3%;">&nbsp;</th>
+				<th class="tableHeadingAlt" style="width:10%;">
+					<input class="checkbox" type="checkbox"
+						   name="toggle_all_checkboxes" value="" />&nbsp;<?=$lang_delete?>
+				</th>
+				<th  style="width:42%;"><?=$lang_member?></th>
+				<th  style="width:15%;"><?=$lang_total_friends?></th>
+				<th  style="width:30%;"><?=$lang_total_reciprocal_friends?></th>
+			</tr>
+			</thead>
+			<tbody>
+<?php foreach ( $members as $key => $val ):
+			$key = $key + 1 + $row_count;
+			$switch = $this->cycle('odd', 'even'); ?>
+				<tr class="<?=$switch?>">
+					<td><?=$key?></td>
+					<td>
+						<input class="checkbox" type="checkbox"
+							   name="toggle[]" value="<?=$val['member_id']?>" id="delete_box_<?=$key?>" />
+					</td>
+					<td>
+						<a href="<?=$val['member_uri']?>"
+						   title="<?=$lang_view_friends_of?><?=$val['screen_name']?>"><?=$val['screen_name']?></a>
+					</td>
+					<td><?=$val['total_friends']?></td>
+					<td><?=$val['total_reciprocal_friends']?></td>
+				</tr>
+<?php endforeach?>
+		<?php $switch = $this->cycle('odd', 'even'); ?>
+				</tbody>
+				<tr class="<?=$switch?>">
+					<td>&nbsp;</td>
+					<td colspan="4">
+						<input class="checkbox" type="checkbox"
+							    name="toggle_all_checkboxes" value="" /><strong>&nbsp;<?=$lang_delete?></strong>
+					</td>
+				</tr>
+<?php if ( $paginate != '' ) : ?>
+		<?php $switch = $this->cycle('odd', 'even'); ?>
+				<tr class="<?=$switch?>">
+					<td  colspan="5">
+						<?=$paginate?>
+					</td>
+				</tr>
+<?php endif?>
+			</tbody>
+		</table>
+
+		<p><input type="submit" class="submit" value="<?=$lang_delete?>" /></p>
+	</form>
+<?php endif?>

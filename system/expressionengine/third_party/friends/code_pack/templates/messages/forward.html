@@ -1,0 +1,56 @@
+{embed="%prefix%inc/index" page_title="Forwarding Message"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Forwarding Message</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+				{exp:friends:message_form return="%prefix%messages" dynamic="off" forward_mode="y" message_id="{segment_3}" notification_template="%prefix%notifications/new_message"}
+				<p>Select Recipient(s): <select name="friend[]" multiple="multiple" size="3">
+					{friends}<option value="{friends_member_id}">{friends_screen_name}</option>{/friends}
+				</select></p>
+				<hr />
+				<p>Subject:<br /><input type="text" name="friends_subject" value="FW: {friends_message_subject}" style="width: 450px;" /></p>
+				<p>Message:<br /><textarea name="friends_message" rows="10" cols="50" style="width: 450px; height: 200px;">
+
+
+------- Original Message -------
+{friends_message}</textarea></p>
+				<hr />
+				<p><input type="submit" name="submit" value="Forward" /></p>
+				{/exp:friends:message_form}
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Forwarding Message" page displays a form for forwarding a private message to another user. It uses the Friends:Message_Form function, but is modified slightly to switch to Reply Mode, which retrieves information about the original private message.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/message_form/">Friends:Message_Form</a> with <b>reply_mode="y"</b> parameter to switch the message form into reply mode and display a pre-filled form for the currently logged in user to forward a message to their friend(s).</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

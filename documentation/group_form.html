@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Group Form | Friends | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Friends</a></li>
+						<li>Group Form</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="https://solspace.com/expressionengine/friends">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3></li>
+<li><p>Basic:</p>
+
+<ul>
+<li><a href="add.html">Add</a></li>
+<li><a href="form.html">Form</a></li>
+<li><a href="hug.html">Hug</a></li>
+<li><a href="hugs.html">Hugs</a></li>
+<li><a href="invites.html">Invites</a></li>
+<li><a href="members.html">Members</a></li>
+<li><a href="mine.html">Mine</a></li>
+<li><a href="mutual_friends.html">Mutual Friends</a></li>
+</ul></li>
+<li><p>Profile Wall:</p>
+
+<ul>
+<li><a href="profile_wall.html">Profile Wall</a></li>
+<li><a href="profile_wall_comment_delete.html">Profile Wall Comment Delete</a></li>
+<li><a href="profile_wall_form.html">Profile Wall Form</a></li>
+</ul></li>
+<li><p>Status Updates:</p>
+
+<ul>
+<li><a href="status.html">Status</a></li>
+<li><a href="status_delete.html">Status Delete</a></li>
+<li><a href="status_form.html">Status Form</a></li>
+</ul></li>
+<li><p>Groups:</p>
+
+<ul>
+<li><a href="groups.html">Groups</a></li>
+<li><a href="group_add.html">Group Add</a></li>
+<li><a href="group_delete.html">Group Delete</a></li>
+<li><a href="group_entries.html">Group Entries</a></li>
+<li><a href="group_entry_add.html">Group Entry Add</a></li>
+<li class="current"><a href="group_form.html">Group Form</a></li>
+<li><a href="group_members.html">Group Members</a></li>
+<li><a href="member_of_group.html">Member Of Group</a></li>
+<li><a href="group_wall.html">Group Wall</a></li>
+<li><a href="group_wall_comment_delete.html">Group Wall Comment Delete</a></li>
+<li><a href="group_wall_form.html">Group Wall Form</a></li>
+</ul></li>
+<li><p>Messages:</p>
+
+<ul>
+<li><a href="messages.html">Messages</a></li>
+<li><a href="message_delete.html">Message Delete</a></li>
+<li><a href="message_folders.html">Message Folders</a></li>
+<li><a href="message_folder_form.html">Message Folder Form</a></li>
+<li><a href="message_folder_name.html">Message Folder Name</a></li>
+<li><a href="message_form.html">Message Form</a></li>
+<li><a href="message_move.html">Message Move</a></li>
+</ul></li>
+<li><p>Referrals:</p>
+
+<ul>
+<li><a href="referral_invite_form.html">Referral Invite Form</a></li>
+<li><a href="referral_referral_count.html">Referral Count</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<p>The <em>Friends:Group_Form</em> function allows your users to create and
+manage virtual group memberships on your website. Users on your site can
+be invited to join, or request to join a group.</p>
+
+<pre class="brush: html;">{exp:friends:group_form} content {/exp:friends:group_form}</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#variable_pairs">Variable Pairs</a></li>
+<li><a href="#form_fields">Form Fields</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#extras">Extras</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#dynamic">dynamic</a></li>
+<li><a href="#form_class">form_class</a></li>
+<li><a href="#form_name">form_name</a></li>
+<li><a href="#form_id">form_id</a></li>
+<li><a href="#friends_group_id">friends_group_id</a></li>
+<li><a href="#group_name">group_name</a></li>
+<li><a href="#limit">limit</a></li>
+<li><a href="#notification_accept">notification_accept</a></li>
+<li><a href="#notification_approve">notification_approve</a></li>
+<li><a href="#notification_invite">notification_invite</a></li>
+<li><a href="#notification_leave">notification_leave</a></li>
+<li><a href="#notification_remove">notification_remove</a></li>
+<li><a href="#notification_request">notification_request</a></li>
+<li><a href="#onsubmit">onsubmit</a></li>
+<li><a href="#return">return</a></li>
+<li><a href="#subject_accept">subject_accept</a></li>
+<li><a href="#subject_approve">subject_approve</a></li>
+<li><a href="#subject_invite">subject_invite</a></li>
+<li><a href="#subject_leave">subject_leave</a></li>
+<li><a href="#subject_remove">subject_remove</a></li>
+<li><a href="#subject_request">subject_request</a></li>
+<li><a href="#template">template</a></li>
+</ul>
+
+<p><a name="dynamic"></a></p>
+
+<h3>dynamic=</h3>
+
+<pre class="brush: html;">dynamic="off"</pre>
+
+<p>This parameter is available to stop the loop from looking into
+the URI for an ID of any type.</p>
+
+<p><a name="form_class"></a></p>
+
+<h3>form_class=</h3>
+
+<pre class="brush: html;">form_class="your_form_class"</pre>
+
+<p>This parameter allows you to establish a class attribute for the form.</p>
+
+<p><a name="form_name"></a></p>
+
+<h3>form_name=</h3>
+
+<pre class="brush: html;">form_name="your_form_name"</pre>
+
+<p>This parameter allows you to establish a name attribute for the form.</p>
+
+<p><a name="form_id"></a></p>
+
+<h3>form_id=</h3>
+
+<pre class="brush: html;">form_id="your_form_id"</pre>
+
+<p>This parameter allows you to establish an ID attribute for the form.</p>
+
+<p><a name="friends_group_id"></a></p>
+
+<h3>friends_group_id=</h3>
+
+<pre class="brush: html;">friends_group_id="{segment_3}"</pre>
+
+<p>This parameter allows you to hardcode a group ID,
+pull a group ID dynamically from the URL, or pass an ID through an
+embed.</p>
+
+<p><a name="group_name"></a></p>
+
+<h3>group_name=</h3>
+
+<pre class="brush: html;">group_name="{segment_3}"</pre>
+
+<p>This parameter allows you to hardcode a group name, pull a
+group name dynamically from the URL, or pass name through an embed.</p>
+
+<p><a name="limit"></a></p>
+
+<h3>limit=</h3>
+
+<pre class="brush: html;">limit="10"</pre>
+
+<p>This parameter controls how many results will be outputted. The
+limit will default to <strong>100</strong> members if a value is not specified.</p>
+
+<p><a name="notification_accept"></a></p>
+
+<h3>notification_accept=</h3>
+
+<pre class="brush: html;">notification_accept="friends_notifications/group_accept"</pre>
+
+<p>This parameter controls which EE template to use
+to format a notification to the group owner when someone accepts his
+invitation to join a group.</p>
+
+<p><a name="notification_approve"></a></p>
+
+<h3>notification_approve=</h3>
+
+<pre class="brush: html;">notification_approve="friends_notifications/group_approve"</pre>
+
+<p>This parameter controls which EE template to use
+to format a notification to the user who requested membership to a group
+when their request has been confirmed.</p>
+
+<p><a name="notification_invite"></a></p>
+
+<h3>notification_invite=</h3>
+
+<pre class="brush: html;">notification_invite="friends_notifications/group_invite"</pre>
+
+<p>This parameter controls which EE template to use
+to format a notification to the user who is being invited to join a
+group.</p>
+
+<p><a name="notification_leave"></a></p>
+
+<h3>notification_leave=</h3>
+
+<pre class="brush: html;">notification_leave="friends_notifications/group_leave"</pre>
+
+<p>This parameter controls which EE template to use to
+format a notification to the group owner when a user leaves their group.</p>
+
+<p><a name="notification_remove"></a></p>
+
+<h3>notification_remove=</h3>
+
+<pre class="brush: html;">notification_remove="friends_notifications/group_remove"</pre>
+
+<p>This parameter controls which EE template to use to format a notification to the user when they are removed from a group by the group owner.</p>
+
+<p><a name="notification_request"></a></p>
+
+<h3>notification_request=</h3>
+
+<pre class="brush: html;">notification_request="friends_notifications/group_request"</pre>
+
+<p>This parameter controls which EE template to use to format a notification to the group owner when a user requests to join his group.</p>
+
+<p><a name="onsubmit"></a></p>
+
+<h3>onsubmit=</h3>
+
+<pre class="brush: html;">onsubmit="some_javascript()"</pre>
+
+<p>This parameter allows you to execute Javascript functions at form submission.</p>
+
+<p><a name="return"></a></p>
+
+<h3>return=</h3>
+
+<pre class="brush: html;">return="template_group/template"</pre>
+
+<p>The 'return' parameter allows you to return the user to a specified
+template upon successful submittal of form. Also available within this parameter is <em>%%friends_group_id%%</em>, which will parse out as
+the group ID of the newly created group. This allows you to have a
+return URL with the group ID in the URI, which lets you dynamically view
+data of the newly created group.</p>
+
+<p><a name="subject_accept"></a></p>
+
+<h3>subject_accept=</h3>
+
+<pre class="brush: html;">subject_accept="{friends_user_screen_name} has accepted your invitation to join your group!"</pre>
+
+<p>This parameter outputs the subject line for the
+notification email to the group owner when someone accepts his
+invitation to join a group.</p>
+
+<p><a name="subject_approve"></a></p>
+
+<h3>subject_approve=</h3>
+
+<pre class="brush: html;">subject_approve="You are now a member of the {friends_group_title} group!"</pre>
+
+<p>This parameter outputs the subject line for the
+notification email to the user who requested membership to a group when
+their request has been confirmed.</p>
+
+<p><a name="subject_invite"></a></p>
+
+<h3>subject_invite=</h3>
+
+<pre class="brush: html;">subject_invite="{friends_owner_screen_name} would like you to join the {friends_group_title} group"</pre>
+
+<p>This parameter outputs the subject line for the
+notification email to the user who is being invited to join a group.</p>
+
+<p><a name="subject_leave"></a></p>
+
+<h3>subject_leave=</h3>
+
+<pre class="brush: html;">subject_leave="{friends_user_screen_name} has left the {friends_group_title} group"</pre>
+
+<p>This parameter outputs the subject line for the
+notification email to the group owner when a user leaves their group.</p>
+
+<p><a name="subject_remove"></a></p>
+
+<h3>subject_remove=</h3>
+
+<pre class="brush: html;">subject_remove="You have been removed from the {friends_group_title} group"</pre>
+
+<p>This parameter outputs the subject line for the notification email to the user when they are removed from a group by the group owner.</p>
+
+<p><a name="subject_request"></a></p>
+
+<h3>subject_request=</h3>
+
+<pre class="brush: html;">subject_request="{friends_user_screen_name} has requested to join the {friends_group_title} group"</pre>
+
+<p>This parameter outputs the subject line for the notification email to the group owner when a user requests to join his group.</p>
+
+<p><a name="template"></a></p>
+
+<h3>template=</h3>
+
+<pre class="brush: html;">template="path_to/friends_message_template"</pre>
+
+<p>This parameter allows you to specify an EE template to format
+the message provided by the Friends module when a group edit or create
+action is successful. This would generally be used for AJAX
+implementations.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>All <a href="members.html#variables">standard and custom member fields and usual Friends variables</a> are available for use here. Additionally, these exist as well:</p>
+
+<ul>
+<li><a href="#friends_owner_member_field">friends_owner_member_field</a></li>
+<li><a href="#friends_user_member_field">friends_user_member_field</a></li>
+</ul>
+
+<p><a name="friends_owner_member_field"></a></p>
+
+<h3>friends_owner_member_field</h3>
+
+<pre class="brush: html;">{friends_owner_member_field}</pre>
+
+<p>You can parse the <strong>screen_name</strong>, <strong>username</strong>, and <strong>member_id</strong>
+member fields for both the user and the group owner for use in the
+<a href="#notifications">Notification Templates</a> as well as the <strong>subject&#95;</strong>
+parameters. All member fields are available within the
+<a href="#members">members</a> and <a href="#friends">friends</a> variable pairs. To parse
+these member fields for the group owner, prepend the variables with
+<em>friends_owner&#95;</em>. To construct this variable, simply use
+<strong>friends_owner&#95;</strong> + <strong>member_field_name</strong>.</p>
+
+<p><a name="friends_owner_user_field"></a></p>
+
+<h3>friends_owner_user_field</h3>
+
+<pre class="brush: html;">{friends_user_member_field}</pre>
+
+<p>You can parse the <strong>screen_name</strong>, <strong>username</strong>, and <strong>member_id</strong>
+member fields for both the user and the group owner for use in the
+<a href="#notifications">Notification Templates</a> as well as the <strong>subject&#95;</strong>
+parameters. All member fields are available within the
+<a href="#members">members</a> and <a href="#friends">friends</a> variable pairs. To parse
+these member fields for the user, prepend the variables with
+<em>friends_user&#95;</em>. To construct this variable, simply use
+<strong>friends_user&#95;</strong> + <strong>member_field_name</strong>.</p>
+
+<p><a name="variable_pairs"></a></p>
+
+<h2>Variable Pairs</h2>
+
+<p>The following variable pairs are available for use:</p>
+
+<ul>
+<li><a href="#confirmed">confirmed</a></li>
+<li><a href="#friends">friends</a></li>
+<li><a href="#members">members</a></li>
+<li><a href="#requests">requests</a></li>
+</ul>
+
+<p><strong>Note:</strong> You cannot use more than 1 variable pair together in the same
+form. They must each be used seperately.</p>
+
+<p><a name="confirmed"></a></p>
+
+<h3>confirmed</h3>
+
+<pre class="brush: html;">{confirmed} {/confirmed}</pre>
+
+<p>This variable pair will display all confirmed members of a
+group, which allows the owner to easily manage/remove members of a
+group. It is used to establish the formatting of each row of results
+contained inside your form.</p>
+
+<p><a name="friends"></a></p>
+
+<h3>friends</h3>
+
+<pre class="brush: html;">{friends} {/friends}</pre>
+
+<p>This variable pair will display all reciprocal friends or
+outgoing friend requests from other users, and is used to establish the
+formatting of each row of results contained inside your form.</p>
+
+<p><a name="members"></a></p>
+
+<h3>members</h3>
+
+<pre class="brush: html;">{members} {/members}</pre>
+
+<p>This variable pair will display all members of the site, and is
+used to establish the formatting of each row of results contained inside
+your form.</p>
+
+<p><a name="requests"></a></p>
+
+<h3>requests</h3>
+
+<pre class="brush: html;">{requests} {/requests}</pre>
+
+<p>This variable pair will display all requests from members to
+join a specific group, which allows the owner to easily manage/remove
+members of a group. It is used to establish the formatting of each row
+of results contained inside your form.</p>
+
+<p><a name="form_fields"></a></p>
+
+<h2>Form Fields</h2>
+
+<p>The following form fields are available for use:</p>
+
+<ul>
+<li><a href="#friends_group_description">friends_group_description</a></li>
+<li><a href="#friends_group_id">friends_group_id</a></li>
+<li><a href="#friends_group_name">friends_group_name</a></li>
+<li><a href="#friends_group_private">friends_group_private</a></li>
+<li><a href="#friends_group_template">friends_group_template</a></li>
+<li><a href="#friends_group_title">friends_group_title</a></li>
+<li><a href="#friends_member_id">friends_member_id</a></li>
+<li><a href="#friends_notification_accept">friends_notification_accept</a></li>
+<li><a href="#friends_notification_approve">friends_notification_approve</a></li>
+<li><a href="#friends_notification_invite">friends_notification_invite</a></li>
+<li><a href="#friends_notification_leave">friends_notification_leave</a></li>
+<li><a href="#friends_notification_remove">friends_notification_remove</a></li>
+<li><a href="#friends_notification_request">friends_notification_request</a></li>
+<li><a href="#friends_remove">friends_remove</a></li>
+<li><a href="#friends_subject_accept">friends_subject_accept</a></li>
+<li><a href="#friends_subject_approve">friends_subject_approve</a></li>
+<li><a href="#friends_subject_invite">friends_subject_invite</a></li>
+<li><a href="#friends_subject_leave">friends_subject_leave</a></li>
+<li><a href="#friends_subject_remove">friends_subject_remove</a></li>
+<li><a href="#friends_subject_request">friends_subject_request</a></li>
+</ul>
+
+<p><a name="friends_group_description"></a></p>
+
+<h3>friends_group_description</h3>
+
+<pre class="brush: html;">&lt;textarea name="friends_group_description"&gt;
+    {friends_group_description}
+&lt;/textarea&gt; `
+</pre>
+
+<p>This field allows you to create or edit a description for your group.</p>
+
+<p><a name="friends_group_id"></a></p>
+
+<h3>friends_group_id=</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_group_id" value="{friends_group_id}" /&gt;</pre>
+
+<p>This parameter allows to specify a group ID to edit.</p>
+
+<p><a name="friends_group_name"></a></p>
+
+<h3>friends_group_name</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_group_name" value="{friends_group_name}" /&gt;</pre>
+
+<p>This field allows you to create or edit a "short_name" for your group.</p>
+
+<p><a name="friends_group_private"></a></p>
+
+<h3>friends_group_private</h3>
+
+<pre class="brush: html;">&lt;input type="checkbox"
+    name="friends_group_private" value="{friends_group_private}"
+    {if friends_group_private}
+        checked="checked"
+    {/if}
+/&gt;
+</pre>
+
+<p>This field allows you make your group private
+(hidden from view of non-group members) or public (visible for all to
+see). Specifying <strong>y</strong> makes the group private, while <strong>n</strong> leaves it
+public.</p>
+
+<p><a name="friends_group_template"></a></p>
+
+<h3>friends_group_template</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_group_template" value="path_to/friends_message_template" /&gt;</pre>
+
+<p>This field allows you to specify an EE
+template to format the message provided by the Friends module when a
+group edit or create action is successful. This would generally be used
+for AJAX implementations.</p>
+
+<p><a name="friends_group_title"></a></p>
+
+<h3>friends_group_title</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_group_title" value="{friends_group_title}" /&gt;</pre>
+
+<p>This field allows you to create or edit a full name for your group.</p>
+
+<p><a name="friends_member_id"></a></p>
+
+<h3>friends_member_id[]</h3>
+
+<pre class="brush: html;">&lt;input type="checkbox" name="friends_member[]" value="{friends_member_id}" /&gt;</pre>
+
+<p>This field allows you to create a list of members to
+either be added or deleted from a Group. Make sure you specify the name
+of the field with an open and closing square brackets so that the
+Friends module knows that an array of members is being submitted.</p>
+
+<p><a name="friends_notification_accept"></a></p>
+
+<h3>friends_notification_accept</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_notification_accept" value="friends_notifications/group_accept" /&gt;</pre>
+
+<p>This form field controls which EE
+template to use to format a notification to the group owner when someone
+accepts his invitation to join a group. This would generally be used as
+an alternative to the <a href="#notification_accept">notification_accept</a>
+parameter for AJAX implementations or to allow the user to specify a
+notification template dynamically.</p>
+
+<p><a name="friends_notification_approve"></a></p>
+
+<h3>friends_notification_approve</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_notification_approve" value="friends_notifications/group_approve" /&gt;</pre>
+
+<p>This parameter controls which EE
+template to use to format a notification to the user who requested
+membership to a group when their request has been confirmed. This would
+generally be used as an alternative to the
+<a href="#notification_approve">notification_approve</a> parameter for AJAX
+implementations or to allow the user to specify a notification template
+dynamically.</p>
+
+<p><a name="friends_notification_invite"></a></p>
+
+<h3>friends_notification_invite</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_notification_invite" value="friends_notifications/group_invite" /&gt;</pre>
+
+<p>This parameter controls which EE template
+to use to format a notification to the user who is being invited to join
+a group. This would generally be used as an alternative to the
+<a href="#notification_invite">notification_invite</a> parameter for AJAX
+implementations or to allow the user to specify a notification template
+dynamically.</p>
+
+<p><a name="friends_notification_leave"></a></p>
+
+<h3>friends_notification_leave</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_notification_leave" value="friends_notifications/group_leave" /&gt;</pre>
+
+<p>This parameter controls which EE template
+to use to format a notification to the group owner when a user leaves
+their group. This would generally be used as an alternative to the
+<a href="#notification_leave">notification_leave</a> parameter for AJAX
+implementations or to allow the user to specify a notification template
+dynamically.</p>
+
+<p><a name="friends_notification_remove"></a></p>
+
+<h3>friends_notification_remove</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_notification_remove" value="friends_notifications/group_remove" /&gt;</pre>
+
+<p>This parameter controls which EE template
+to use to format a notification to the user when they are removed from a
+group by the group owner. This would generally be used as an alternative
+to the <a href="#notification_remove">notification_remove</a> parameter for AJAX
+implementations or to allow the user to specify a notification template
+dynamically.</p>
+
+<p><a name="friends_notification_request"></a></p>
+
+<h3>friends_notification_request</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_notification_request" value="friends_notifications/group_request" /&gt;</pre>
+
+<p>This parameter controls which EE template to use
+to format a notification to the group owner when a user requests to join
+his group. This would generally be used as an alternative to the
+<a href="#notification_request">notification_request</a> parameter for AJAX
+implementations or to allow the user to specify a notification template
+dynamically.</p>
+
+<p><a name="friends_remove"></a></p>
+
+<h3>friends_remove</h3>
+
+<pre class="brush: html;">&lt;input type="checkbox" name="friends_remove" value="yes" /&gt;</pre>
+
+<p>This field allows you to change the form to
+Remove/delete member mode. In Remove mode, any of the selected members
+passed through the submission will be removed from the group.</p>
+
+<p><a name="friends_subject_accept"></a></p>
+
+<h3>friends_subject_accept</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_subject_accept" value="{friends_user_screen_name} has accepted your invitation to join your group!" /&gt;</pre>
+
+<p>This parameter outputs the subject line for
+the notification email to the group owner when someone accepts his
+invitation to join a group. This would generally be used as an
+alternative to the <a href="#subject_accept">subject_accept</a> parameter for AJAX
+implementations or to allow the user to specify a subject line
+dynamically.</p>
+
+<p><a name="friends_subject_approve"></a></p>
+
+<h3>friends_subject_approve</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_subject_approve" value="You are now a member of the {friends_group_title} group!" /&gt;</pre>
+
+<p>This parameter outputs the subject line for
+the notification email to the user who requested membership to a group
+when their request has been confirmed. This would generally be used as
+an alternative to the <a href="#subject_approve">subject_approve</a> parameter for
+AJAX implementations or to allow the user to specify a subject line
+dynamically.</p>
+
+<p><a name="friends_subject_invite"></a></p>
+
+<h3>friends_subject_invite</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_subject_invite" value="{friends_owner_screen_name} would like you to join the {friends_group_title} group" /&gt;</pre>
+
+<p>This parameter outputs the subject line for
+the notification email to the user who is being invited to join a group.
+This would generally be used as an alternative to the
+<a href="#subject_invite">subject_invite</a> parameter for AJAX implementations or
+to allow the user to specify a subject line dynamically.</p>
+
+<p><a name="friends_subject_leave"></a></p>
+
+<h3>friends_subject_leave</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_subject_leave" value="{friends_user_screen_name} has left the {friends_group_title} group" /&gt;</pre>
+
+<p>This parameter outputs the subject line for the
+notification email to the group owner when a user leaves their group.
+This would generally be used as an alternative to the
+<a href="#subject_leave">subject_leave</a> parameter for AJAX implementations or
+to allow the user to specify a subject line dynamically.</p>
+
+<p><a name="friends_subject_remove"></a></p>
+
+<h3>friends_subject_remove</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_subject_remove" value="You have been removed from the {friends_group_title} group" /&gt;</pre>
+
+<p>This parameter outputs the subject line for
+the notification email to the user when they are removed from a group by
+the group owner. This would generally be used as an alternative to the
+<a href="#subject_remove">subject_remove</a> parameter for AJAX implementations or
+to allow the user to specify a subject line dynamically.</p>
+
+<p><a name="friends_subject_request"></a></p>
+
+<h3>friends_subject_request</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_subject_request" value="{friends_user_screen_name} has requested to join the {friends_group_title} group" /&gt;</pre>
+
+<p>This parameter outputs the subject line for
+the notification email to the group owner when a user requests to join
+his group. This would generally be used as an alternative to the
+<a href="#subject_request">subject_request</a> parameter for AJAX implementations
+or to allow the user to specify a subject line dynamically.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p><a name="creating_a_new_group"></a></p>
+
+<h3>Creating a New Group</h3>
+
+<p>The following example will display a form for creating a new Group:</p>
+
+<pre class="brush: html;">&lt;h3&gt;Create a new Group&lt;/h3&gt;
+
+{exp:friends:group_form
+    return="friends/groups/%friends_group_id%"
+    notification_invite="friends_notifications/group_invite"
+    subject_invite="{friends_screen_name} would like you to join their group"
+}
+
+    &lt;p&gt;Group Name:
+        &lt;input type="text" name="friends_group_name" /&gt;&lt;/p&gt;
+    &lt;p&gt;Group Title:
+        &lt;input type="text" name="friends_group_title" /&gt;&lt;/p&gt;
+    &lt;p&gt;Group Description:
+        &lt;br /&gt;&lt;textarea name="friends_group_description"&gt;&lt;/textarea&gt;&lt;/p&gt;
+    &lt;p&gt;Is this Group Private?
+        &lt;input type="radio" name="friends_group_private" id="friends_group_private_yes" value="y" /&gt;
+        &lt;label for="friends_group_private_yes"&gt;Yes&lt;/label&gt;
+        &lt;input type="radio" name="friends_group_private" id="friends_group_private_no" value="n" /&gt;
+            &lt;label for="friends_group_private_no"&gt;No&lt;/label&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;input type="submit" name="submit" value="Create Group!" /&gt;
+
+    &lt;h4&gt;Invite Your Friends?&lt;/h4&gt;
+    &lt;ul&gt;
+    {friends}
+        &lt;li&gt;&lt;input type="checkbox" name="friends_member_id[]" id="friend_{friends_member_id}" value="{friends_member_id}" /&gt; &lt;label for="friend_{friends_member_id}"&gt;{friends_screen_name}&lt;/label&gt;&lt;/li&gt;
+    {/friends}
+    &lt;/ul&gt;
+
+{/exp:friends:group_form}
+</pre>
+
+<p><a name="editing_an_existing_group"></a></p>
+
+<h3>Editing an Existing Group</h3>
+
+<p>The following example will display a form for creating a new Group, as
+well as display a list of all of the currently logged in user’s friends,
+allowing them to multi invite their friends to join the group:</p>
+
+<pre class="brush: html;">&lt;h3&gt;Edit your Group or Add Friends&lt;/h3&gt;
+
+{exp:friends:group_form
+    return="friends/groups/{friends_group_id}"
+    notification_invite="friends_notifications/group_invite"
+    subject_invite="{friends_owner_screen_name} would like you to join the {friends_group_title} group"
+    notification_approve="friends_notifications/group_approve"
+    subject_approve="You are now a member of the {friends_group_title} group!"
+}
+
+    &lt;h4&gt;Edit Your Group Details&lt;/h4&gt;
+
+    &lt;p&gt;Group Name:
+        &lt;input type="text" name="friends_group_name" value="{friends_group_name}" /&gt;&lt;/p&gt;
+    &lt;p&gt;Group Title:
+        &lt;input type="text" name="friends_group_title" value="{friends_group_title}" /&gt;&lt;/p&gt;
+    &lt;p&gt;Group Description:
+        &lt;br /&gt;&lt;textarea name="friends_group_description"&gt;
+            {friends_group_description}
+        &lt;/textarea&gt;&lt;/p&gt;
+
+    &lt;p&gt;Is this Group Private?
+        &lt;input type="radio" name="friends_group_private" id="friends_group_private_yes" value="y"
+        {if friends_group_private == "y"}
+            checked="checked"
+        {/if} /&gt;
+        &lt;label for="friends_group_private_yes"&gt;Yes&lt;/label&gt;
+        &lt;input type="radio" name="friends_group_private" id="friends_group_private_no" value="n"
+        {if friends_group_private == "n"}
+            checked="checked"
+        {/if} /&gt;
+        &lt;label for="friends_group_private_no"&gt;No&lt;/label&gt;&lt;/p&gt;
+
+    &lt;h4&gt;Invite Your Friends?&lt;/h4&gt;
+    &lt;ul&gt;
+    {friends}
+        &lt;li&gt;&lt;input type="checkbox" name="friends_member_id[]" id="friend_{friends_member_id}" value="{friends_member_id}" {if friends_group_member == "y"}checked="checked"{/if} /&gt; &lt;label for="friend_{friends_member_id}"&gt;{friends_screen_name}&lt;/label&gt;&lt;/li&gt;
+    {/friends}
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;input type="submit" name="submit" value="Update Group" /&gt;
+
+{/exp:friends:group_form}
+</pre>
+
+<p><a name="confirming_requests_to_join_a_group"></a></p>
+
+<h3>Confirming Requests to Join a Group</h3>
+
+<p>The following example will display a form that allows the group owner to
+easily approve multiple requests to join their group at once (we’ve also
+included hidden fields for each group info field so the data is no lost
+on form submit):</p>
+
+<pre class="brush: html;">&lt;h3&gt;Requests to Join Your Group&lt;/h3&gt;
+
+{exp:friends:group_form
+    return="friends/groups/{friends_group_id}"
+    notification_approve="friends_notifications/group_approve"
+    subject_approve="You are now a member of the {friends_group_title} group!"
+}
+
+    &lt;h4&gt;Check off any of the members below to approve their request to join your group:&lt;/h4&gt;
+    &lt;p&gt;Group Title: "{friends_group_title}"
+    &lt;input type="hidden" name="friends_group_name" value="{friends_group_name}" /&gt;
+    &lt;input type="hidden" name="friends_group_title" value="{friends_group_title}" /&gt;
+    &lt;input type="hidden" name="friends_group_description" value="{friends_group_description}" /&gt;
+    &lt;input type="hidden" name="friends_group_private" value="{friends_group_private}" /&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+    {requests}
+        &lt;li&gt;&lt;input type="checkbox" name="friends_member_id[]" id="friend_{friends_member_id}" value="{friends_member_id}" /&gt; &lt;label for="friend_{friends_member_id}"&gt;{friends_screen_name}&lt;/label&gt;&lt;/li&gt;
+    {/requests}
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;input type="submit" name="submit" value="Approve these Members" /&gt;
+
+{/exp:friends:group_form}
+</pre>
+
+<p><a name="removing_members_from_a_group"></a></p>
+
+<h3>Removing Members from a Group</h3>
+
+<p>The following example will display a form that allows the group owner to
+easily approve multiple requests to join their group at once (we’ve also
+included hidden fields for each group info field so the data is no lost
+on form submit):</p>
+
+<pre class="brush: html;">&lt;h3&gt;Remove Members From Your Group&lt;/h3&gt;
+
+{exp:friends:group_form
+    return="friends/groups/{friends_group_id}"
+    notification_remove="friends_notifications/group_remove"
+    subject_remove="You have been removed from the {friends_group_title} group"
+}
+
+    &lt;h4&gt;Check off any of the members below to remove them from your group:&lt;/h4&gt;
+    &lt;p&gt;Group Title: "{friends_group_title}"
+        &lt;input type="hidden" name="friends_group_name" value="{friends_group_name}" /&gt;
+        &lt;input type="hidden" name="friends_group_title" value="{friends_group_title}" /&gt;
+        &lt;input type="hidden" name="friends_group_description" value="{friends_group_description}" /&gt;
+        &lt;input type="hidden" name="friends_group_private" value="{friends_group_private}" /&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+    {confirmed}
+        &lt;li&gt;&lt;input type="checkbox" name="friends_member_id[]" id="friend_{friends_member_id}" value="{friends_member_id}" /&gt; &lt;label for="friend_{friends_member_id}"&gt;{friends_screen_name}&lt;/label&gt;&lt;/li&gt;
+    {/confirmed}
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;input type="hidden" name="friends_remove" value="yes" /&gt;
+    &lt;input type="submit" name="submit" value="Remove these Members" /&gt;
+
+{/exp:friends:group_form}
+</pre>
+
+<p><a name="notifications"></a></p>
+
+<h2>Notification Templates</h2>
+
+<p>For your notification templates, you use regular EE templates, and just
+add code like this:</p>
+
+<p><a name="user_requests_to_join_a_group"></a></p>
+
+<h3>User requests to join a group ("friends_notifications/group_request")</h3>
+
+<pre class="brush: html;">Hello {friends_owner_screen_name}!
+
+{friends_user_screen_name} would like to join
+the {friends_group_title} group.
+
+Click the link below to accept this request to join your group:
+{path='friends/group_add'}/group/{friends_group_id}/member/{friends_user_member_id}/
+</pre>
+
+<p><a name="user_accepts_invitation_to_join_group"></a></p>
+
+<h3>User accepts invitation to join group ("friends_notifications/group_accept")</h3>
+
+<pre class="brush: html;">Hello {friends_owner_screen_name}!
+
+{friends_user_screen_name} has accepted your request and
+joined the {friends_group_title} group!
+
+Click the link below to view their profile:
+{path='friends/profile'}/{friends_user_member_id}/
+</pre>
+
+<p><a name="user_leaves_group"></a></p>
+
+<h3>User leaves group ("friends_notifications/group_leave")</h3>
+
+<pre class="brush: html;">Hello {friends_owner_screen_name}!
+
+{friends_user_screen_name} has just left the
+{friends_group_title} group.
+
+Click the link below to view their profile:
+{path='friends/profile'}/{friends_user_member_id}/
+</pre>
+
+<p><a name="group_owner_invites_user_to_join_his_group"></a></p>
+
+<h3>Group Owner invites user to join his group ("friends_notifications/group_invite")</h3>
+
+<pre class="brush: html;">Hello {friends_user_screen_name}!
+
+You have been invited to join the
+{friends_group_title} group.
+
+Click the link below to accept this request and join the group:
+{path='friends/group_add'}/group/{friends_group_id}/
+</pre>
+
+<p><a name="group_owner_approves_of_user_request_to_join_group"></a></p>
+
+<h3>Group Owner approves of user request to join group ("friends_notifications/group_approve")</h3>
+
+<pre class="brush: html;">Hello {friends_user_screen_name}!
+
+You request to join the {friends_group_title} group
+has been accepted!
+
+Click the link below to view the group:
+{path='friends/group_info'}/{friends_group_id}/
+</pre>
+
+<p><a name="group_owner_removes_user_from_group"></a></p>
+
+<h3>Group Owner removes user from group ("friends_notifications/group_remove")</h3>
+
+<pre class="brush: html;">Hello {friends_user_screen_name}!
+
+You have been removed from the {friends_group_title} group.
+
+Click the link below to view the group:
+{path='friends/group_info'}{friends_group_id}/
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

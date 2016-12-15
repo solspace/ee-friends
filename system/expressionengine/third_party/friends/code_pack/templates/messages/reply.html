@@ -1,0 +1,54 @@
+{embed="%prefix%inc/index" page_title="Replying to Message"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Replying to Message</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+				{exp:friends:message_form return="%prefix%messages" reply_mode="y" message_id="{segment_3}" notification_template="%prefix%notifications/new_message"}
+				<p>Recipients: <b>{friends_message_sender_screen_name}</b> <input name="friend[]" type="hidden" value="{friends_message_sender_member_id}" /></p>
+				<hr />
+				<p>Subject:<br /><input type="text" name="friends_subject" value="RE: {friends_message_subject}" style="width: 450px;" /></p>
+				<p>Message:<br /><textarea name="friends_message" rows="10" cols="50" style="width: 450px; height: 200px;">
+
+
+------- Original Message -------
+{friends_message}</textarea></p>
+				<hr />
+				<p><input type="submit" name="submit" value="Reply!" /></p>
+				{/exp:friends:message_form}
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Replying to Message" page displays a form for replying to a private message. It uses the Friends:Message_Form function, but is modified slightly to switch to Reply Mode, which retrieves information about the original private message.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/message_form/">Friends:Message_Form</a> with <b>reply_mode="y"</b> parameter to switch the message form into reply mode and display a pre-filled form for the currently logged in user to reply to a message their friend sent them.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

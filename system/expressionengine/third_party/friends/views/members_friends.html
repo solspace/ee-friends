@@ -1,0 +1,90 @@
+	<table id="member_table" class="mainTable padTable" style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+		<thead>
+			<tr>
+				<th style="width:3%;" ><?=$lang_id?></th>
+				<th style="width:22%;"><?=$lang_name?></th>
+				<th style="width:15%;"><?=$lang_total_friends?></th>
+				<th style="width:15%;"><?=$lang_total_reciprocal_friends?></th>
+				<th style="width:15%;"><?=$lang_total_blocked_friends?></th>
+				<th style="width:15%;"><?=$lang_friends_groups_public?></th>
+				<th style="width:15%;"><?=$lang_friends_groups_private?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="odd">
+				<td><?=$member['member_id']?></td>
+				<td><?=$member['screen_name']?></td>
+				<td><?=$member['total_friends']?></td>
+				<td><?=$member['total_reciprocal_friends']?></td>
+				<td><?=$member['total_blocked_friends']?></td>
+				<td><?=$member['friends_groups_public']?></td>
+				<td><?=$member['friends_groups_private']?></td>
+			</tr>
+		</tbody>
+	</table>
+
+<?php if ( count( $friends ) == 0 ) : ?>
+	<p><span class="notice"><?=$member['screen_name']?><?=$lang__added_no_friends_yet?></span></p>
+<?php else: ?>
+	<form action="<?=$form_uri?>" method="post" id="delete_friend_form">
+		<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+		<input type="hidden" name="member_id" value="<?=$member['member_id']?>" />
+		<table class="mainTable padTable magicCheckboxTable"
+			   style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+			<thead>
+				<tr>
+					<th style="width:3%;">&nbsp;</th>
+					<th style="width:7%;">
+						<input class="checkbox" type="checkbox"
+							   name="toggle_all_checkboxes" value="" />&nbsp;<?=$lang_delete?>
+					</th>
+					<th style="width:30%;"><?=$lang_name?></th>
+					<th style="width:20%;"><?=$lang_date?></th>
+					<th style="width:15%;"><?=$lang_reciprocal?></th>
+					<th style="width:15%;"><?=$lang_blocked?></th>
+					<th style="width:10%;"><?=$lang_total_friends?></th>
+				</tr>
+			</thead>
+			<tbody>
+	<?php foreach ( $friends as $key => $val ) :
+			$key 	= $key + 1 + $row_count;
+			$switch = $this->cycle('odd', 'even'); ?>
+				<tr class="<?=$switch?>">
+					<td><?=$key?></td>
+					<td>
+						<input class="checkbox" type="checkbox"
+							   name="toggle[]" value="<?=$val['entry_id']?>" id="delete_box_<?=$key?>" />
+					</td>
+					<td>
+						<a href="<?=$val['friend_uri']?>"
+						   title="<?=$lang_view_friends_of_?><?=$val['screen_name']?>">
+								<?=$val['screen_name']; ?></a>
+					</td>
+					<td><?=$val['date']?></td>
+					<td><?=$val['reciprocal']?></td>
+					<td><?=$val['block']?></td>
+					<td><?=$val['total_friends']?></td>
+				</tr>
+	<?php endforeach; ?>
+			<?php $switch = $this->cycle('odd', 'even'); ?>
+				<tr class="<?=$switch?>">
+					<td>&nbsp;</td>
+					<td colspan="6">
+						<input class="checkbox" type="checkbox"
+							   name="toggle_all_checkboxes" value="" />&nbsp;<strong><?=$lang_delete?></strong>
+					</td>
+				</tr>
+	<?php if ( $paginate !== '' ) : ?>
+			<?php $switch = $this->cycle('odd', 'even'); ?>
+				<tr class="<?=$switch?>">
+					<td colspan="7">
+						<?=$paginate?>
+					</td>
+				</tr>
+	<?php endif; ?>
+			</tbody>
+		</table>
+
+		<p><input type="submit" class="submit" value="<?=$lang_delete?>" /></p>
+	</form>
+<?php endif; ?>

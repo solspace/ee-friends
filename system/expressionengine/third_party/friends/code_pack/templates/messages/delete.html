@@ -1,0 +1,49 @@
+{embed="%prefix%inc/index" page_title="Messages :: Delete"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Messages :: Delete</h3>
+			
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				{exp:friends:message_delete}
+				{if success}<h4>Successful!</h4>{/if}
+				{if failure}<h4>Error!</h4>{/if}
+				<p style="margin: 10px 0 0 5px;">{friends_message}</p>
+				{/exp:friends:message_delete}
+
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Message Delete" page displays a success/failure message based on whether or not the private message was successfully deleted.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/message_delete/">Friends:Message_Delete</a> to handle the functionality for deleting a message or messages.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

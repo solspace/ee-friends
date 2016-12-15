@@ -1,0 +1,46 @@
+{embed="%prefix%inc/index" page_title="Delete a Group Comment"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Delete a Group Comment</h3>
+			
+			<p></p>
+
+{embed="%prefix%inc/profile_column"}
+
+			<div id="middlecolumn">
+
+{if logged_in}
+				{exp:friends:group_comment_delete comment_id="{segment_3}"}
+				{if success}<h4>Successful!</h4>{/if}
+				{if failure}<h4>Error!</h4>{/if}
+				<p style="margin: 10px 0 0 5px;">{friends_message}</p>
+				{/exp:friends:group_comment_delete}
+{if:else}
+				<h4>Error!</h4>
+				<p style="margin: 10px 0 0 5px;">You must be logged in to delete a Group comment.</p>
+{/if}
+
+			</div>
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Group Comment Delete" page allows authors of comments, owner of the group, and Super Admins to delete one any applicable group wall comments. You can pass a comment ID in the URI or you can hard code it using the 'comment_id' template parameter</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/group_comment_delete/">Friends:Group_Comment_Delete</a> to delete a group wall comment.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

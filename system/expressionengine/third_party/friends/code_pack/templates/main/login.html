@@ -1,0 +1,43 @@
+{embed="%prefix%inc/index" page_title="Login"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Login</h3>
+
+			<p></p>
+		
+			<div id="fullcolumn">
+
+				<h5>Please login!</h5>
+				<p>To view these pages, please sign in with your username and password below:</p>
+				<p>Don't have an Account? <a href="{path=member/register}/">Sign up here!</a> | <a href="{path=member/forgot_password}/">Forgot Your Password?</a></p>
+				{exp:member:login_form return="%prefix%main/index"}
+				<p><label for="username">Your Username:</label> <input type="text" id="username" name="username" style="width: 300px;" /></p>
+				<p><label for="password">Your Password:</label> <input type="password" name="password" id="password" style="width: 300px" /></p>
+				<p><input type="checkbox" name="auto_login" id="auto_login" value="1" /> <label for="auto_login">Auto-login on future visits?</label></p>
+				<p><input type="submit" name="submit" value="Login" /></p>
+				{/exp:member:login_form}
+
+			</div>
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Login" page allows site visitors to login to the website.</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li>Native EE <a href="https://docs.expressionengine.com/v2/add-ons/member/index.html#login-form-tag">Member:Login_Form</a> to display a form for visitors to login.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

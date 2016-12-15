@@ -1,0 +1,57 @@
+{embed="%prefix%inc/index" page_title="Create New Group"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Create New Group</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+				{exp:friends:group_form return="%prefix%groups/group/%friends_group_id%" notification_invite="%prefix%notifications/group_invite" subject_invite="{friends_owner_screen_name} would like you to join their group"}
+				<p>Group Name: <input type="text" name="friends_group_name" style="width: 450px;" /></p>
+				<p>Group Title: <input type="text" name="friends_group_title" style="width: 450px;" /></p>
+				<p>Group Description:<br /><textarea name="friends_group_description" rows="10" cols="50" style="width: 450px; height: 200px;"></textarea></p>
+				<p>Is this Group Private? <input type="radio" name="friends_group_private" id="friends_group_private_yes" value="y" /> <label for="friends_group_private_yes">Yes</label>&nbsp;&nbsp;&nbsp;<input type="radio" name="friends_group_private" id="friends_group_private_no" value="n" /> <label for="friends_group_private_no">No</label></p>
+				<hr />
+				<h5>Invite Your Friends?</h5>
+				<ul>
+					{friends}
+					<li><input type="checkbox" name="friends_member_id[]" id="{friends_member_id}" value="{friends_member_id}" /> <label for="{friends_member_id}" style="width: auto;">{friends_screen_name}</label></li>
+					{/friends}
+				</ul>
+				<hr />
+				<p><input type="submit" name="submit" value="Create Group!" />
+				{/exp:friends:group_form}  
+			</div>
+		
+{/if}
+
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Create New Group" page allows the currently logged in user to create a new group, as well as invite some of their friends to join at the same time.</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/group_form/">Friends:Group_Form</a> to display a form for users to create new groups.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

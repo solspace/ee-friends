@@ -1,0 +1,85 @@
+<form method="post" action="<?=$form_uri?>" autocomplete="off">
+<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+	<table class="mainTable padTable" style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+		<thead>
+			<tr>
+				<th colspan="3" style='text-align:left;'>
+					<?=$lang_general_preferences?>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="odd">
+				<td style="width:20%;"><?=$lang_notify_parse_all?></td>
+				<td style="width:30%;">
+					<input name="notify_parse_all" type="radio" value="y" <?=$notify_parse_all_yes?>/>
+					<?=$lang_yes?>
+					<input name="notify_parse_all" type="radio" value="n" <?=$notify_parse_all_no?>/>
+					<?=$lang_no?>
+				</td>
+				<td><?=$lang_notify_parse_all_exp?></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<table class="mainTable padTable" style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+		<thead>
+			<tr>
+				<th class="tableHeadingAlt" colspan="3" style='text-align:left;'>
+					<?=$lang_messaging_preferences_explanation?>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr class="odd">
+			<td style="width:20%;"><?=$lang_max_message_chars?></td>
+			<td style="width:30%;">
+				<input name="max_message_chars" value="<?=$max_message_chars; ?>" />
+				<?=$lang_characters?>
+			</td>
+			<td><?=$lang_max_message_chars_exp?></td>
+		</tr>
+		<!-- Max message chars -->
+		<tr class="even">
+			<td><?=$lang_message_waiting_period?></td>
+			<td>
+				<input name="message_waiting_period" value="<?=$message_waiting_period; ?>" />
+				<?=$lang_hours?>
+			</td>
+			<td><?=$lang_message_waiting_period_exp?></td>
+		</tr>
+		<!-- Message waiting period -->
+		<tr class="odd">
+			<td><?=$lang_message_throttling?></td>
+			<td>
+				<input name="message_throttling" value="<?=$message_throttling; ?>" />
+				<?=$lang_seconds?>
+			</td>
+			<td><?=$lang_message_throttling_exp?></td>
+		</tr>
+		<!-- Message throttling -->
+		<tr class="even">
+			<td><?=$lang_message_day_limit?></td>
+			<td>
+				<input name="message_day_limit" value="<?=$message_day_limit; ?>" />
+				<?=$lang_per_day?>
+			</td>
+			<td><?=$lang_message_day_limit_exp?></td>
+		</tr>
+		<!-- Message day limit -->
+		<tr class="odd">
+			<td><?=$lang_max_recipients_per_message?></td>
+			<td>
+				<input name="max_recipients_per_message" value="<?=$max_recipients_per_message; ?>" />
+				<?=$lang_per_message?>
+			</td>
+			<td><?=$lang_max_recipients_per_message_exp?></td>
+		</tr>
+		<!-- Max recipients per message -->
+		</tbody>
+	</table>
+
+	<p><input type="submit" class="submit" value="<?=$lang_submit?>" /></p>
+
+</form>

@@ -1,0 +1,52 @@
+{embed="%prefix%inc/index" page_title="Friend Requests"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+
+			<h2>Friends</h2>
+
+			<h3>Friend Requests</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				<h5>The following users would like to be your Friend:</h5>
+				<ul>
+				{exp:friends:invites invite_type="incoming" show_blocked="no" orderby="screen_name" sort="asc" limit="20" paginate="bottom"}
+				<li class="forced-height"><img src="{if friends_avatar_url}{friends_avatar_url}{if:else}{exp:friends:theme_folder_url}code_pack/images/icon_profile.gif{/if}" height="35" width="35" alt="{friends_screen_name}'s photo" style="float: left; margin-right: 10px;" /><b>{friends_screen_name}</b><br /><small><a href="{path=%prefix%main/profile}/{friends_member_id}/">View Profile</a> | <a href="{path=%prefix%main/add}/{friends_member_id}/">Confirm this Friend</a> | <a href="{path=%prefix%main/add}/{friends_member_id}/block/">Block</a></small></li>
+				{if friends_no_results}<li>You currently have no friend requests.</li>{/if}
+				{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+				{/exp:friends:invites}
+				</ul>
+
+			</div>
+
+{/if}
+
+		</div>
+
+		<div id="sidecolumn">
+
+			<h3>About This Page</h3>
+
+			<p>The "Friend Requests" page is meant to show all pending friend requests for the currently logged in user.</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/invites/">Friends:Invites</a> with <b>invite_type="incoming"</b> parameter, so it displays all pending incoming friend requests from other users.</li>
+			</ul>
+
+		</div>
+{embed="%prefix%inc/footer"}

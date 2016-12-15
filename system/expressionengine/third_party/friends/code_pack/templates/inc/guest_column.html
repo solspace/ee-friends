@@ -1,0 +1,21 @@
+			<div id="leftcolumn">
+
+				<h4>Welcome, Guest!</h4>
+
+				<ul class="bottom-border">
+					<li>To have full access to these pages and features, please login below:</li>
+					{exp:member:login_form return="%prefix%main/index"}
+					<li><label for="username">Username:</label><br /><input type="text" id="username" name="username" style="width: 120px;" /></li>
+					<li><label for="password">Password:</label><br /><input type="password" name="password" id="password" style="width: 120px" /></li>
+					<li><input type="checkbox" name="auto_login" id="auto_login" value="1" /> <label for="auto_login">Remember me?</label></li>
+					<l><input type="submit" name="submit" value="Login" /></li>
+					{/exp:member:login_form}
+				</ul>
+				<ul class="bottom-border">
+					<li>Don't have an account yet?<br /><a href="{path=member/register}/"><b>Sign up here!</b></a></li>
+				</ul>
+				<ul>
+					<li><a href="{path=member/forgot_password}/"><b>Forgot Password?</b></a></li>
+				</ul>
+
+			</div>

@@ -1,0 +1,7 @@
+				{exp:friends:group_wall friends_group_id="{embed:friends_group_id}"}
+					{if friends_no_results}
+						<p>There are currently no comments for this Group.</p>
+					{/if}
+					<p class="wall">{if embed:group_owner == "yes" OR logged_in_member_id == friends_member_id OR logged_in_group_id == "1"}<small style="float:right;"><a href="{path="%prefix%groups/delete_group_comment"}/{friends_comment_id}/">(delete)</a></small>{/if}{friends_comment}<br/>
+					By: {if logged_in_member_id == friends_member_id}<b>You</b>{if:else}<a href="{path='%prefix%main/profile'}/{friends_member_id}/">{friends_screen_name}</a>{/if} on {friends_entry_date format="%F %j, %Y at %h:%i %a"}</p>
+				{/exp:friends:group_wall}

@@ -1,0 +1,37 @@
+<?php if ( count( $members ) == 0 ) : ?>
+	<p><span class="notice"><?=$lang_no_friends?></span></p>
+<?php else: ?>
+	<table id="main_table" class="mainTable padTable" style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+		<thead>
+			<tr>
+				<th style="width:3%;">&nbsp;</th>
+				<th style="width:42%;"><?=$lang_member?></th>
+				<th style="width:15%;"><?=$lang_total_friends?></th>
+				<th style="width:20%;"><?=$lang_total_reciprocal_friends?></th>
+				<th style="width:20%;"><?=$lang_total_blocked_friends?></th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ( $members as $key => $val ) : $key = $key + 1 + $row_count; ?>
+			<?php $class = $this->cycle('odd', 'even'); ?>
+			<tr class="<?=$class?>">
+				<td><?=$key?></td>
+				<td><a href="<?=$val['view_friends_url']?>" 
+					title="<?=$lang_view_friends_of_?><?=$val['screen_name']?>"><?=$val['screen_name']; ?></a>
+				</td>
+				<td><?=$val['total_friends']; ?></td>
+				<td><?=$val['total_reciprocal_friends']; ?></td>
+				<td><?=$val['total_blocked_friends']; ?></td>
+			</tr>
+		<?php endforeach; ?>
+		<?php if ( $paginate !== '' ) : ?>
+			<?php $class = $this->cycle('odd', 'even'); ?>
+			<tr class="<?=$class?>">
+				<td colspan="5">
+					<?=$paginate?>				
+				</td>
+			</tr>
+		<?php endif; ?>
+		</tbody>
+	</table>
+<?php endif; ?>

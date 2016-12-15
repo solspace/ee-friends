@@ -1,0 +1,40 @@
+			<div id="leftcolumn">
+				{exp:friends:members member_id="{segment_3}" dynamic="off" limit="1"}
+					<a href="{path=%prefix%main/profile}/{friends_member_id}/"><img src="{if friends_avatar_url}{friends_avatar_url}{if:else}{exp:friends:theme_folder_url}code_pack/images/icon_profile.gif{/if}" width="150" alt="{friends_screen_name}'s photo" /></a><br /><br />
+				<ul>
+					{if segment_2 != "profile"}<li style="margin-bottom: 5px; border-bottom: 1px solid #d5d5d5"><a href="{path=%prefix%main/profile}/{friends_member_id}/">Back to Profile</a></li>{/if}
+
+<!-- START - if Owner of Profile -->
+					{if segment_3 == logged_in_member_id}
+					<li{if segment_2 == "friends"} class="selected"{/if}><a href="{path=%prefix%main/friends}/{friends_member_id}/">View My Friends ({friends_total_reciprocal_friends})</a></li>
+					<li{if segment_2 == "groups"} class="selected"{/if}><a href="{path=%prefix%main/groups}/{friends_member_id}/">View My Groups</a></li>
+					<li{if segment_2 == "hug"} class="selected"{/if}><a href="{path=%prefix%main/hug}/{friends_member_id}/">Hug Me!</a></li>
+					<li style="margin-top: 10px; border-top: 1px solid #d5d5d5"><small><a href="{path=%prefix%main}/">Edit My Profile</a></small></li>
+					{/if}
+<!-- END - if Owner of Profile -->
+
+<!-- START - if Reciprocal Friend -->
+					{if friends_reciprocal == "y"}
+					<li{if segment_2 == "friends"} class="selected"{/if}><a href="{path=%prefix%main/friends}/{friends_member_id}/">View {friends_screen_name}'s Friends ({friends_total_reciprocal_friends})</a></li>
+					<li{if segment_2 == "mutual"} class="selected"{/if}><a href="{path=%prefix%main/mutual}/{friends_member_id}/">View Mutual Friends</a></li>
+					<li{if segment_2 == "groups"} class="selected"{/if}><a href="{path=%prefix%main/groups}/{friends_member_id}/">View {friends_screen_name}'s Groups</a></li>
+					<li{if segment_2 == "sendmessage"} class="selected"{/if}><a href="{path=%prefix%main/sendmessage}/{friends_member_id}/">Send {friends_screen_name} a Message</a></li>
+					<li{if segment_2 == "hug"} class="selected"{/if}><a href="{path=%prefix%main/hug}/{friends_member_id}/">Hug {friends_screen_name}</a></li>
+					<li{if segment_2 == "add"} class="selected"{/if} style="margin-top: 10px; border-top: 1px solid #d5d5d5"><a href="{path=%prefix%main/add}/{friends_member_id}/delete/"><small>Remove from Friends</small></a></li>
+					<li{if segment_2 == "add"} class="selected"{/if}><a href="{path=%prefix%main/add}/{friends_member_id}/block/"><small>Block this Friend</small></a></li>
+					{/if}
+<!-- END - if Reciprocal Friend -->
+
+<!-- START - if Non/Pending Friend -->
+					{if friends_reciprocal == "n" AND segment_3 != logged_in_member_id}
+					<li{if segment_2 == "friends"} class="selected"{/if}><a href="{path=%prefix%main/friends}/{friends_member_id}/">View {friends_screen_name}'s Friends ({friends_total_reciprocal_friends})</a></li>
+					<li{if segment_2 == "mutual"} class="selected"{/if}><a href="{path=%prefix%main/mutual}/{friends_member_id}/">View Mutual Friends</a></li>
+					<li{if segment_2 == "groups"} class="selected"{/if}><a href="{path=%prefix%main/groups}/{friends_member_id}/">View {friends_screen_name}'s Groups</a></li>
+					<li{if segment_2 == "sendmessage"} class="selected"{/if}><a href="{path=%prefix%main/sendmessage}/{friends_member_id}/">Send {friends_screen_name} a Message</a></li>
+					<li{if segment_2 == "add"} class="selected"{/if} style="margin-top: 10px; border-top: 1px solid #d5d5d5"><small>{if friend == "y"}(Pending Invitation){if:else}<a href="{path=%prefix%main/add}/{friends_member_id}/">Add to Friends</a>{/if}</small></li>
+					<li{if segment_2 == "add"} class="selected"{/if}><a href="{path=%prefix%main/add}/{friends_member_id}/block/"><small>Block this User</small></a></li>
+					{/if}
+<!-- END - if Non/Pending Friend -->
+				</ul>
+				{/exp:friends:members}
+			</div>

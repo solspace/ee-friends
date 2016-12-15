@@ -1,0 +1,44 @@
+{embed="%prefix%inc/index" page_title="{exp:friends:members member_id="{segment_3}" limit="1"}{friends_screen_name}'s Groups{/exp:friends:members}"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>{exp:friends:members member_id="{segment_3}" limit="1"}{friends_screen_name}'s Groups{/exp:friends:members}</h3>
+			
+			<p></p>
+
+{embed="%prefix%inc/profile_column"}
+
+			<div id="middlecolumn">
+
+				<h5>This user belongs to the following groups:</h5>
+				<ul>
+				{exp:friends:groups show_private_groups="no" member_id="{segment_3}" dynamic="off" type="confirmed" limit="15" paginate="bottom"}
+				<li class="forced-height"><a href="{path=%prefix%groups/group}/{friends_group_id}/"><b>{friends_group_title}</b></a><br />{friends_group_description}</li>
+				{if friends_no_results}<li>This user currently belongs to no groups.</li>{/if}
+				{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+				{/exp:friends:groups}
+				</ul> 
+
+			</div>
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Groups" page shows a list of all non-private groups the given member belongs to.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/groups/">Friends:Groups</a> to display a list of groups the user belongs to.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

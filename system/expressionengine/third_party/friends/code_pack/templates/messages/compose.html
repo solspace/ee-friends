@@ -1,0 +1,58 @@
+{embed="%prefix%inc/index" page_title="Compose New Message"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Compose New Message</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				{exp:friends:mine reciprocal="y"}
+				{if friends_no_results}<div class="friends_error">You currently have no friends. You'll need to make some friends (friend requests at minimum) before you can send someone a message!</div>{/if}
+				{/exp:friends:mine}
+
+				{exp:friends:message_form return="%prefix%messages" notification_template="%prefix%notifications/new_message"}
+				<p>Select Recipient(s): <select name="friend[]" multiple="multiple" size="3">
+					{friends}<option value="{friends_member_id}">{friends_screen_name}</option>{/friends}
+				</select></p>
+				<hr />
+				<p>Subject:<br /><input type="text" name="friends_subject" style="width: 450px;" /></p>
+				<p>Message:<br /><textarea name="friends_message" rows="10" cols="50" style="width: 450px; height: 200px;"></textarea>
+				<hr />
+				<p><input type="submit" name="submit" value="Send!" /></p>
+				{/exp:friends:message_form}
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Compose New Message" page displays a form for composing a new private message to send to other friend(s). Messages can be sent to all site members, but we've constructed this template to list only users that are friends of the currently logged in user.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/message_form/">Friends:Message_Form</a> to display a form for the currently logged in user to send a message to their friend(s).</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/mine/">Friends:Mine</a> to display an error message to the user if they have no friends.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

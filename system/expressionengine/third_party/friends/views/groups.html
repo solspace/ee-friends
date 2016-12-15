@@ -1,0 +1,76 @@
+<?php if ( count( $groups ) == 0 ) : ?>
+	<p><span class="notice"><?=$lang_no_groups?></span></p>
+<?php else: ?>
+		<form action="<?=$form_uri?>" method="post" id="delete_group_form">
+			<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+			<table id="main_table" class="mainTable padTable magicCheckboxTable"
+				   style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+				<thead>
+					<tr>
+						<th  style="width:3%;">&nbsp;</th>
+						<th class="tableHeadingAlt" style="width:10%;">
+							<input class="checkbox" type="checkbox"
+								   name="toggle_all_checkboxes" value="" />&nbsp;<?=$lang_delete?>
+						</th>
+						<th  style="width:10%;"><?=$lang_name?></th>
+						<th  style="width:15%;"><?=$lang_owner?></th>
+						<th  style="width:15%;"><?=$lang_view_invitees?></th>
+						<th  style="width:15%;"><?=$lang_view_requests?></th>
+						<th  style="width:15%;"><?=$lang_view_members?></th>
+						<th  style="width:17%;"><?=$lang_total_members?></th>
+					</tr>
+				</thead>
+				<tbody>
+	<?php foreach ( $groups as $key => $val ):
+			$key = $key + 1 + $row_count;
+			$switch = $this->cycle('odd', 'even'); ?>
+					<tr class="<?=$switch?>">
+						<td><?=$key?></td>
+						<td>
+							<input 	class="checkbox" type="checkbox"
+									name="toggle[]" value="<?=$val['group_id']?>" id="delete_box_<?=$key?>" />
+						</td>
+						<td>
+							<a href="<?=$val['edit_group_uri']?>"
+							   title="<?=$lang_view_member_of_?><?=$val['title']?>"><?=$val['title']?></a>
+						</td>
+						<td><?=$val['screen_name']?></td>
+						<td>
+							<a href="<?=$val['invitees_uri']?>"
+							   title="<?=$lang_view_invitees_of_?><?=$val['title']?>"><?=$lang_view_invitees?></a>
+						</td>
+						<td>
+							<a href="<?=$val['requests_uri']?>"
+							   title="<?=$lang_view_requests_of_?><?=$val['title']?>"><?=$lang_view_requests?></a>
+						</td>
+						<td>
+							<a href="<?=$val['members_uri']?>"
+							   title="<?=$lang_view_members_of_?><?=$val['title']?>"><?=$lang_view_members?></a>
+						</td>
+						<td><?=$val['total_members']?></td>
+					</tr>
+	<?php endforeach?>
+			<?php $switch = $this->cycle('odd', 'even')?>
+					<tr class="<?=$switch?>">
+						<td>&nbsp;</td>
+						<td colspan='7'>
+							<input class="checkbox" type="checkbox" name="toggle_all_checkboxes"
+								   value="" /><strong>&nbsp;<?=$lang_delete?></strong>
+						</td>
+					</tr>
+	<?php if ( $paginate != '' ) : ?>
+			<?php $switch = $this->cycle('odd', 'even')?>
+					<tr class="<?=$switch?>">
+						<td colspan="8">
+							<?=$paginate?>
+						</td>
+					</tr>
+	<?php endif?>
+				</tbody>
+			</table>
+
+
+
+			<p><input type="submit" class="submit" value="<?=$lang_delete?>" /></p>
+		</form>
+<?php endif?>

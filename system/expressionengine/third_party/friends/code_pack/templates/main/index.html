@@ -1,0 +1,102 @@
+{exp:friends:referral_check interval="1" process_referrals="yes"}
+{embed="%prefix%inc/index" page_title="Dashboard"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+
+			<h2>Friends</h2>
+
+			<h3>Dashboard</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				{exp:friends:members member_id="CURRENT_USER"}
+				<h4>{friends_screen_name} {exp:friends:status member_id="CURRENT_USER" limit="1"}<span>{friends_status}</span>{/exp:friends:status}</h4>
+				{/exp:friends:members}
+
+				<hr />
+
+				<h5>Submit New Status:</h5>
+				{exp:friends:status_form return="%prefix%main"}
+				<p>{friends_screen_name} <input type="text" name="friends_status" value="is " /> <input type="submit" name="submit" value="Add" /><br />
+				<input type="checkbox" name="friends_status_private" id="friends_status_private" value="y" /> <label for="friends_status_private">Show Only to Friends?</label></p>
+				{/exp:friends:status_form}
+
+				<h5>Your Previous Statuses:</h5>
+				<ul>
+				{exp:friends:status member_id="CURRENT_USER" offset="1" limit="5"}
+				<li><small style="float: right;"><a href="{path=''}/%prefix%main/delete_status/{friends_status_id}">(delete)</a></small>{friends_status} ({friends_status_date format="%F %j, %Y"})</li>
+				{if friends_no_results}<li>You currently have no previous status updates.</li>{/if}
+				{/exp:friends:status}
+				</ul>
+
+				<hr />
+
+				<h5>Profile Snapshot: (<a href="{path="member/profile"}/">edit?</a>)</h5>
+				<ul>
+				{exp:friends:members member_id="CURRENT_USER"}
+				<li><label>Birthday:</label> {if friends_bday_m}{friends_birthday format="%F"}{/if} {if friends_bday_d}{friends_bday_d}{/if}{if friends_bday_y AND friends_bday_d}, {/if}{if friends_bday_y}{friends_bday_y}{/if}</li>
+				<li><label>Location:</label> {friends_location}</li>
+				<li><label>Occupation:</label> {friends_occupation}</li>
+				<li><label>Email:</label> {encode="{friends_email}"}</li>
+				{if friends_url}<li><label>Website:</label> <a href="{friends_url}">{friends_url}</a></li>{/if}
+				{/exp:friends:members}
+				<li><label>Total Referrals:</label> {exp:friends:referral_count member_id="CURRENT_USER"}{friends_referral_count}{/exp:friends:referral_count} </li>
+				</ul>
+
+				<hr />
+
+				<h5>Birthdays This Week</a></h5>
+				<ul>
+				{exp:friends:mine member_id="CURRENT_USER" birthday_range="7" reciprocal="y" limit="5" orderby="bday_d" sort="asc"}
+				<li class="box-style"><a href="{path=%prefix%main/profile}/{friends_member_id}/"><img src="{if friends_avatar_url}{friends_avatar_url}{if:else}{exp:friends:theme_folder_url}code_pack/images/icon_profile.gif{/if}" height="65" width="65" alt="{friends_screen_name}'s photo" /><br /><b>{friends_screen_name}</b></a><br />({friends_birthday format="%M"} {friends_bday_d})</li>
+				{if friends_no_results}<li>None of your friends have birthdays today.</li>{/if}
+				{/exp:friends:mine}
+				</ul>
+
+				<hr />
+
+				<h5>You've Recently Received Hugs From:</h5>
+				<ul>
+				{exp:friends:hugs member_id="CURRENT_USER" limit="5" sort="desc"}
+				<li><a href="{path=%prefix%main/profile}/{friends_member_id}/">{friends_screen_name}</a> on {friends_hug_date format="%F %j, %Y"}</li>
+				{if friends_no_results}<li>You have not yet been hugged. Spread the love around!</li>{/if}
+				{/exp:friends:hugs}
+				</ul>
+
+			</div>
+
+{/if}
+
+		</div>
+
+		<div id="sidecolumn">
+
+			<h3>About This Page</h3>
+
+			<p>The "Dashboard" page (or "Home" page) in this case shows the currently logged in user a snapshot of their profile as well as Status control.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/status_form/">Friends:Status_Form</a> to submit a new status updates.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/status/">Friends:Status</a> to parse the current and previous status updates.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/members/">Friends:Members</a> to show profile information in the "Profile Snapshot" area</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/mine/">Friends:Mine</a> with <b>birthday_range="7"</b> parameter to display all friends that are having a birthday within the next 7 days.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/hugs/">Friends:Hugs</a> to show friends that have recently hugged you.</li>
+			</ul>
+
+		</div>
+{embed="%prefix%inc/footer"}

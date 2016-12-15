@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Profile Wall | Friends | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Friends</a></li>
+						<li>Profile Wall</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="https://solspace.com/expressionengine/friends">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3></li>
+<li><p>Basic:</p>
+
+<ul>
+<li><a href="add.html">Add</a></li>
+<li><a href="form.html">Form</a></li>
+<li><a href="hug.html">Hug</a></li>
+<li><a href="hugs.html">Hugs</a></li>
+<li><a href="invites.html">Invites</a></li>
+<li><a href="members.html">Members</a></li>
+<li><a href="mine.html">Mine</a></li>
+<li><a href="mutual_friends.html">Mutual Friends</a></li>
+</ul></li>
+<li><p>Profile Wall:</p>
+
+<ul>
+<li class="current"><a href="profile_wall.html">Profile Wall</a></li>
+<li><a href="profile_wall_comment_delete.html">Profile Wall Comment Delete</a></li>
+<li><a href="profile_wall_form.html">Profile Wall Form</a></li>
+</ul></li>
+<li><p>Status Updates:</p>
+
+<ul>
+<li><a href="status.html">Status</a></li>
+<li><a href="status_delete.html">Status Delete</a></li>
+<li><a href="status_form.html">Status Form</a></li>
+</ul></li>
+<li><p>Groups:</p>
+
+<ul>
+<li><a href="groups.html">Groups</a></li>
+<li><a href="group_add.html">Group Add</a></li>
+<li><a href="group_delete.html">Group Delete</a></li>
+<li><a href="group_entries.html">Group Entries</a></li>
+<li><a href="group_entry_add.html">Group Entry Add</a></li>
+<li><a href="group_form.html">Group Form</a></li>
+<li><a href="group_members.html">Group Members</a></li>
+<li><a href="member_of_group.html">Member Of Group</a></li>
+<li><a href="group_wall.html">Group Wall</a></li>
+<li><a href="group_wall_comment_delete.html">Group Wall Comment Delete</a></li>
+<li><a href="group_wall_form.html">Group Wall Form</a></li>
+</ul></li>
+<li><p>Messages:</p>
+
+<ul>
+<li><a href="messages.html">Messages</a></li>
+<li><a href="message_delete.html">Message Delete</a></li>
+<li><a href="message_folders.html">Message Folders</a></li>
+<li><a href="message_folder_form.html">Message Folder Form</a></li>
+<li><a href="message_folder_name.html">Message Folder Name</a></li>
+<li><a href="message_form.html">Message Form</a></li>
+<li><a href="message_move.html">Message Move</a></li>
+</ul></li>
+<li><p>Referrals:</p>
+
+<ul>
+<li><a href="referral_invite_form.html">Referral Invite Form</a></li>
+<li><a href="referral_referral_count.html">Referral Count</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<p>The <em>Friends:Profile_Wall</em> tag displays comments that have been
+submitted to a given user's profile, similar to the way Facebook's
+Comment Wall used to be in the earlier days. Used in conjunction with
+the <a href="profile_wall_form.html">Friends:Profile_Wall_Form</a> tag.</p>
+
+<pre class="brush: html;">{exp:friends:profile_wall} content {/exp:friends:profile_wall}</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#variable_pairs">Variable Pairs</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#friend_id">friend_id</a></li>
+<li><a href="#limit">limit</a></li>
+<li><a href="#paginate">paginate</a></li>
+<li><a href="#username">username</a></li>
+</ul>
+
+<p><a name="friend_id"></a></p>
+
+<h3>friend_id=</h3>
+
+<pre class="brush: html;">friend_id="{segment_3}"</pre>
+
+<p>This parameter is required (unless using <a href="#username">username</a>) to let
+this tag know which profile you want to show results for.
+You'll typically pass a value to this from a segment value in the URI.</p>
+
+<p><a name="limit"></a></p>
+
+<h3>limit=</h3>
+
+<pre class="brush: html;">limit="10"</pre>
+
+<p>This parameter allows you to set a limit of the amount of comments you'd like to show up for a given member. The default is <strong>100</strong>.</p>
+
+<p><a name="paginate"></a></p>
+
+<h3>paginate=</h3>
+
+<pre class="brush: html;">paginate="both"</pre>
+
+<p>This parameter allows you to control where the pagination will
+display. Options are <strong>top</strong>, <strong>bottom</strong>, or <strong>both</strong>. Used in conjunction with the <a href="#friends_paginate">friends_paginate</a> variable pair.</p>
+
+<p><a name="username"></a></p>
+
+<h3>username=</h3>
+
+<pre class="brush: html;">username="{segment_3}"</pre>
+
+<p>This parameter is required (unless using <a href="#friend_id">friend_id</a>) to
+let this tag know which profile you want to show results
+for. You'll typically pass a value to this from a segment value in the URI.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>The following variables are available for use:</p>
+
+<ul>
+<li><a href="#friends_comment">friends_comment</a></li>
+<li><a href="#friends_entry_date">friends_entry_date</a></li>
+<li><a href="#friends_member_id">friends_member_id</a></li>
+<li><a href="#friends_screen_name">friends_screen_name</a></li>
+<li><a href="#friends_username">friends_username</a></li>
+</ul>
+
+<p><a name="friends_comment"></a></p>
+
+<h3>friends_comment</h3>
+
+<pre class="brush: html;">{friends_comment}</pre>
+
+<p>This variable outputs the comment the user submitted to a given profile wall.</p>
+
+<p><a name="friends_entry_date"></a></p>
+
+<h3>friends_entry_date</h3>
+
+<pre class="brush: html;">{friends_entry_date format="%F %j, %Y at %h:%i %a"}</pre>
+
+<p>This variable outputs the date of when the comment was submitted to a
+given profile wall.</p>
+
+<p><a name="friends_member_id"></a></p>
+
+<h3>friends_member_id</h3>
+
+<pre class="brush: html;">{friends_member_id}</pre>
+
+<p>This variable displays the member ID of the user that submitted a given
+comment.</p>
+
+<p><a name="friends_screen_name"></a></p>
+
+<h3>friends_screen_name</h3>
+
+<pre class="brush: html;">{friends_screen_name}</pre>
+
+<p>This variable displays the screen name of the user that submitted a
+given comment.</p>
+
+<p><a name="friends_username"></a></p>
+
+<h3>friends_username</h3>
+
+<pre class="brush: html;">{friends_username}</pre>
+
+<p>This variable displays the username of the user that submitted a given
+comment.</p>
+
+<p><a name="variable_pairs"></a></p>
+
+<h2>Variable Pairs</h2>
+
+<p>The following variable pairs are available for use:</p>
+
+<ul>
+<li><a href="#friends_paginate">friends_paginate</a></li>
+</ul>
+
+<p><a name="friends_paginate"></a></p>
+
+<h3>friends_paginate</h3>
+
+<pre class="brush: html;">{friends_paginate}
+    Page {friends_current_page} of {friends_total_pages} pages
+    {friends_pagination_links}
+{/friends_paginate}
+</pre>
+
+<p>Pagination is available for this tag and works just like regular
+pagination, but each variable is prepended with <em>friends&#95;</em>. Used in
+conjunction with the <a href="#paginate">paginate</a> parameter.</p>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>The following conditionals are available for use:</p>
+
+<ul>
+<li><a href="#if_friends_no_results">if friends_no_results</a></li>
+</ul>
+
+<p><a name="if_friends_no_results"></a></p>
+
+<h3>if friends_no_results</h3>
+
+<pre class="brush: html;">{if friends_no_results}
+    There are currently no comments for this profile.
+{/if} `
+</pre>
+
+<p>This conditional evaluates to true and displays it's contents when there are no results found for this tag.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p>The following example will display all comments submitted to a given
+member’s profile wall:</p>
+
+<pre class="brush: html;">&lt;h3&gt;Wall Comments:&lt;/h3&gt;
+
+{exp:friends:profile_wall
+    friend_id="{segment_3}"
+}
+
+    &lt;p class="wall"&gt;
+        {friends_comment}&lt;br/&gt;
+        By:
+        {if logged_in_member_id == friends_member_id}
+            &lt;b&gt;You&lt;/b&gt;
+        {if:else}
+            &lt;a href="{path='friends/profile'}/{friends_member_id}/"&gt;
+                {friends_screen_name}
+            &lt;/a&gt;
+        {/if}
+        on {friends_entry_date format="%F %j, %Y at %h:%i %a"}
+    &lt;/p&gt;
+    {if friends_no_results}
+        &lt;p&gt;There are currently no comments for this profile.&lt;/p&gt;
+    {/if}
+{/exp:friends:profile_wall}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

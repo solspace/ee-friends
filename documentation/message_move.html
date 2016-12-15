@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Message Move | Friends | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Friends</a></li>
+						<li>Message Move</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="https://solspace.com/expressionengine/friends">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3></li>
+<li><p>Basic:</p>
+
+<ul>
+<li><a href="add.html">Add</a></li>
+<li><a href="form.html">Form</a></li>
+<li><a href="hug.html">Hug</a></li>
+<li><a href="hugs.html">Hugs</a></li>
+<li><a href="invites.html">Invites</a></li>
+<li><a href="members.html">Members</a></li>
+<li><a href="mine.html">Mine</a></li>
+<li><a href="mutual_friends.html">Mutual Friends</a></li>
+</ul></li>
+<li><p>Profile Wall:</p>
+
+<ul>
+<li><a href="profile_wall.html">Profile Wall</a></li>
+<li><a href="profile_wall_comment_delete.html">Profile Wall Comment Delete</a></li>
+<li><a href="profile_wall_form.html">Profile Wall Form</a></li>
+</ul></li>
+<li><p>Status Updates:</p>
+
+<ul>
+<li><a href="status.html">Status</a></li>
+<li><a href="status_delete.html">Status Delete</a></li>
+<li><a href="status_form.html">Status Form</a></li>
+</ul></li>
+<li><p>Groups:</p>
+
+<ul>
+<li><a href="groups.html">Groups</a></li>
+<li><a href="group_add.html">Group Add</a></li>
+<li><a href="group_delete.html">Group Delete</a></li>
+<li><a href="group_entries.html">Group Entries</a></li>
+<li><a href="group_entry_add.html">Group Entry Add</a></li>
+<li><a href="group_form.html">Group Form</a></li>
+<li><a href="group_members.html">Group Members</a></li>
+<li><a href="member_of_group.html">Member Of Group</a></li>
+<li><a href="group_wall.html">Group Wall</a></li>
+<li><a href="group_wall_comment_delete.html">Group Wall Comment Delete</a></li>
+<li><a href="group_wall_form.html">Group Wall Form</a></li>
+</ul></li>
+<li><p>Messages:</p>
+
+<ul>
+<li><a href="messages.html">Messages</a></li>
+<li><a href="message_delete.html">Message Delete</a></li>
+<li><a href="message_folders.html">Message Folders</a></li>
+<li><a href="message_folder_form.html">Message Folder Form</a></li>
+<li><a href="message_folder_name.html">Message Folder Name</a></li>
+<li><a href="message_form.html">Message Form</a></li>
+<li class="current"><a href="message_move.html">Message Move</a></li>
+</ul></li>
+<li><p>Referrals:</p>
+
+<ul>
+<li><a href="referral_invite_form.html">Referral Invite Form</a></li>
+<li><a href="referral_referral_count.html">Referral Count</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<p>The <em>Friends:Message_Move</em> function is part of the Private Messaging
+system and allows your users to move messages from one folder to
+another. This can be done individually or with multiples at a time.</p>
+
+<pre class="brush: html;">{exp:friends:message_move} content {/exp:friends:message_move}</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#form_fields">Form Fields</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#setup">Setup</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#dynamic">dynamic</a></li>
+<li><a href="#message_id">message_id</a></li>
+</ul>
+
+<p><a name="dynamic"></a></p>
+
+<h3>dynamic=</h3>
+
+<pre class="brush: html;">dynamic="off"</pre>
+
+<p>This parameter is available to stop the loop from looking into
+the URI for a message ID.</p>
+
+<p><a name="message_id"></a></p>
+
+<h3>message_id=</h3>
+
+<pre class="brush: html;">message_id="{segment_3}"</pre>
+
+<p>The <em>Friends:Message_Move</em> loop automatically grabs the message ID from
+the URI, but this parameter is available to use, should you
+be doing something crazy.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>The following variables are available for use:</p>
+
+<ul>
+<li><a href="#friends_message">friends_message</a></li>
+</ul>
+
+<p><a name="friends_message"></a></p>
+
+<h3>friends_message</h3>
+
+<pre class="brush: html;">{friends_message}</pre>
+
+<p>This variable will output the success message or any
+errors upon loading the <em>Friends:Message_Move</em> template.</p>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>The following conditionals are available for use:</p>
+
+<ul>
+<li><a href="#failure">failure</a></li>
+<li><a href="#success">success</a></li>
+</ul>
+
+<p><a name="failure"></a></p>
+
+<h3>failure</h3>
+
+<pre class="brush: html;">{if failure}
+    Error!
+{/if}
+</pre>
+
+<p>This conditional shows its contents if the requested action
+DOES NOT execute successfully.</p>
+
+<p><a name="success"></a></p>
+
+<h3>success</h3>
+
+<pre class="brush: html;">{if success}
+    Successful!
+{/if}
+</pre>
+
+<p>This conditional shows its contents if the requested action
+executes successfully.</p>
+
+<p><a name="form_fields"></a></p>
+
+<h2>Form Fields</h2>
+
+<p>The following form fields are available for use:</p>
+
+<ul>
+<li><a href="#ajax">ajax</a></li>
+<li><a href="#csrf_token">csrf_token</a></li>
+<li><a href="#friends_message_id">friends_message_id[]</a></li>
+</ul>
+
+<p><a name="ajax"></a></p>
+
+<h3>ajax</h3>
+
+<pre class="brush: html;">&lt;input type="hidden" name="ajax" value="yes" /&gt;</pre>
+
+<p>This form field tells the method to behave nicely with AJAX calls.</p>
+
+<p><a name="csrf_token"></a></p>
+
+<h3>csrf_token</h3>
+
+<pre class="brush: html;">&lt;input type="hidden" name="csrf_token" value="{csrf_token}" /&gt;</pre>
+
+<p>As of EE 2.7+, this field is required when constructing forms that aren't created using {exp:friends:...} tags. EE 2.7.x uses <strong>{XID&#95;HASH}</strong> (and name="XID"), and EE 2.8.x and above uses <strong>{csrf&#95;token}</strong>.</p>
+
+<p><a name="friends_message_id"></a></p>
+
+<h3>friends_message_id[]</h3>
+
+<pre class="brush: html;">&lt;input type="checkbox" name="friends_message_id[]" value="{friends_message_id}" /&gt;</pre>
+
+<p>This form field allows you to have multiple
+check boxes within a list of messages so a user can select multiple
+messages and move them.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p>The following code should be a complete example for using this function:</p>
+
+<pre class="brush: html;">{exp:friends:message_move}
+
+    {if success}
+        &lt;h3&gt;Successful!&lt;/h3&gt;
+    {/if}
+    {if failure}
+        &lt;h3&gt;Error!&lt;/h3&gt;
+    {/if}
+
+&lt;p&gt;{friends_message}&lt;/p&gt;
+
+{/exp:friends:message_move}
+</pre>
+
+<p><a name="setup"></a></p>
+
+<h2>Setup</h2>
+
+<p><a name="multiple_select_from_folder_view"></a></p>
+
+<h3>Multiple Select from Folder View</h3>
+
+<p>To implement this feature into a multi-select feature in your
+Folder-view list of messages page, your code would look like this:</p>
+
+<pre class="brush: html;">&lt;form method="post" action="{path='friends/message_move'}"&gt;
+
+&lt;input type="hidden" name="csrf_token" value="{csrf_token}"&gt;
+
+&lt;ul&gt;
+{exp:friends:messages
+    message_folder="inbox"
+}
+    &lt;li&gt;
+        &lt;input type="checkbox" name="friends_message_id[]" value="{friends_message_id}" /&gt;
+
+        &lt;a href="{path='friends/message_view'}/{friends_message_id}"&gt;
+            {friends_message_subject}
+        &lt;/a&gt;
+        from
+        {friends_message_sender}
+            {friends_message_sender_screen_name}
+        {/friends_message_sender}
+        on
+        {friends_message_date format="%F %j, %Y at %g:%i %a"}
+        {if friends_message_read == "y"}
+            (read on {friends_message_time_read format="%F %j, %Y"})
+        {if:else}
+            (unread)
+        {/if}
+    &lt;/li&gt;
+
+    {if friends_no_results}
+        &lt;li&gt;You currently have no messages for this folder.&lt;/li&gt;
+    {/if}
+{/exp:friends:messages}
+&lt;/ul&gt;
+
+&lt;p&gt;
+    Move Selected Messages to
+    &lt;select name="friends_message_folder_id"&gt;
+    {friends_message_folders}
+        &lt;option value="{friends_message_folder_id}"&gt;{friends_message_folder}&lt;/option&gt;
+    {/friends_message_folders}
+    &lt;/select&gt;
+    &lt;input type="submit" name="submit" value="Move" /&gt;
+&lt;/p&gt;
+
+&lt;/form&gt;
+</pre>
+
+<p><a name="single_message_view"></a></p>
+
+<h3>Single Message View</h3>
+
+<p>To implement this feature into a template for viewing a single message,
+your code would look like this:</p>
+
+<pre class="brush: html;">&lt;form method="post" action="{path='friends/message_move'}/{segment_3}/"&gt;
+
+    &lt;input type="hidden" name="csrf_token" value="{csrf_token}"&gt;
+
+    Move Messages to
+    &lt;select name="friends_message_folder_id"&gt;
+    {friends_message_folders}
+        &lt;option value="{friends_message_folder_id}"&gt;{friends_message_folder}&lt;/option&gt;
+    {/friends_message_folders}
+    &lt;/select&gt;
+    &lt;input type="submit" name="submit" value="Move" /&gt;
+
+&lt;/form&gt;
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+{embed="%prefix%inc/index" page_title="Group Member Management"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Group Member Management</h3>
+			
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				{exp:friends:group_add notification_accept="%prefix%notifications/group_accept" notification_approve="%prefix%notifications/group_approve" notification_invite="%prefix%notifications/group_invite" notification_request="%prefix%notifications/group_request" subject_accept="{friends_user_screen_name} has accepted your invitation to join your group!" subject_approve="You are now a member of the {friends_group_title} group!" subject_invite="{friends_owner_screen_name} would like you to join the {friends_group_title} group" subject_request="{friends_user_screen_name} has requested to join the {friends_group_title} group"}
+				{if success}<h4>Successful!</h4>{/if}
+				{if failure}<h4>Error!</h4>{/if}
+				<p>{friends_message}</p>
+				{/exp:friends:group_add}
+
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Group Member Management" page contains the Friends:Group_Add function, which is an all-in-one function to manage group memberships. Using this same template and providing different segments in the URI, Friends:Group_Add knows when to make group invites, group requests, membership approvals, delete memberships, etc, and above all, send out the appropriate email notifications.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/group_add/">Friends:Group_Add</a> to manage every aspect of group memberships.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

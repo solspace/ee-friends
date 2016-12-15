@@ -1,0 +1,91 @@
+{embed="%prefix%inc/index" page_title="Groups :: &#34;{exp:friends:groups type="all_groups" friends_group_id="{segment_3}" limit="1" dynamic="off"}{friends_group_title}{/exp:friends:groups}&#34;"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Groups :: {exp:friends:groups type="all_groups" friends_group_id="{segment_3}" limit="1" dynamic="off"}"{friends_group_title}"{/exp:friends:groups}</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+				{if segment_4 == "updated"}<div class="friends_success">You have successfully updated this group!</div>{/if}
+				{if segment_4 == "member_update"}<div class="friends_success">You have successfully updated your members for this group!</div>{/if}
+
+				{exp:friends:groups type="all_groups" friends_group_id="{segment_3}" limit="1" dynamic="off"}
+				{exp:friends:member_of_group friends_group_id="{friends_group_id}"}
+				{if member_of_group == "n"}<h5><i>(Limited View)</i></h5>{/if}
+				<h4>{friends_group_title}{if friends_group_private == "y"} (private){/if}</h4>
+				<p>{friends_group_description}</p>
+				<hr />
+
+				{if member_of_group == "y" AND friends_group_owner_id != logged_in_member_id}<p><i>You are a member of this Group.</i> <a href="{path="%prefix%groups/add"}/group/{friends_group_id}/delete/">Leave this Group?</a></p>{/if}
+				{if member_of_group == "n"}<p><i>You are NOT a member of this group.</i> <a href="{path="%prefix%groups/add"}/group/{friends_group_id}/">Join this Group?</a></p>{/if}
+				{if friends_group_owner_id == logged_in_member_id}<p><i>You own this group.</i> <a href="{path=%prefix%groups/update}/{friends_group_id}/">Update</a> | <a href="{path=%prefix%groups/manage_members}/{friends_group_id}/">Manage Members</a> | <a href="{path=%prefix%groups/delete_confirm}/{friends_group_id}/">Delete Group</a></p>{/if}
+				<hr />
+
+				<h5>Confirmed Members</h5>
+				{if member_of_group == "y"}
+				{embed="%prefix%inc/group_members" friends_group_id="{friends_group_id}"}
+				{if:else}
+				<p>You must be a confirmed member of this group to view member list.</p>
+				{/if}
+				<hr />
+
+				<h5>Weblog Entries for this Group</h5>
+				{if member_of_group == "y"}
+				{embed="%prefix%inc/group_entries" friends_group_id="{friends_group_id}"}
+				{if:else}
+				<p>You must be a confirmed member of this group to view entries.</p>
+				{/if}
+				<hr />
+
+				<h5>Wall Comments For This Group</h5>
+				{embed="%prefix%inc/group_wall" friends_group_id="{friends_group_id}" {if friends_group_owner_id == logged_in_member_id}group_owner="yes"{/if}}
+				<hr />
+
+				{/exp:friends:member_of_group}
+				{/exp:friends:groups}
+
+				<h5>Comment On This Wall:</h5>				
+				{exp:friends:group_wall_form friends_group_id="{segment_3}"}
+					<p><textarea name="friends_wall_comment" rows="4" cols="40"></textarea></p>
+					<p><input type="submit" value="Comment" name="submit" /></p>
+				{/exp:friends:group_wall_form}
+
+				<hr/>
+
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Group Detail" page shows detailed information about the selected group. Within this, there's a check to see if the currently logged in member is a confirmed member of the group, and/or if they are owner of the group. Additionally, it displays current confirmed members of the group as well as weblog entries that have been posted to the group.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/groups/">Friends:Groups</a> dynamically checking for group ID in the URI to build most of the group detail information.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/member_of_group/">Friends:Member_of_Group</a> to determine whether or not the currently logged in user is a confirmed member of the group. This allows for conditionals to be set.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/group_members/">Friends:Group_Members</a> to display a list of all confirmed members in the group.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/group_entries/">Friends:Group_Entries</a> to display a list of all weblog entries that have been submitted to the group using the <a href="https://solspace.com/expressionengine/friends/docs/group_entry_add/">Group_Entry_Add</a> function.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

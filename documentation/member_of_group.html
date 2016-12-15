@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Member Of Group | Friends | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Friends</a></li>
+						<li>Member Of Group</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="https://solspace.com/expressionengine/friends">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3></li>
+<li><p>Basic:</p>
+
+<ul>
+<li><a href="add.html">Add</a></li>
+<li><a href="form.html">Form</a></li>
+<li><a href="hug.html">Hug</a></li>
+<li><a href="hugs.html">Hugs</a></li>
+<li><a href="invites.html">Invites</a></li>
+<li><a href="members.html">Members</a></li>
+<li><a href="mine.html">Mine</a></li>
+<li><a href="mutual_friends.html">Mutual Friends</a></li>
+</ul></li>
+<li><p>Profile Wall:</p>
+
+<ul>
+<li><a href="profile_wall.html">Profile Wall</a></li>
+<li><a href="profile_wall_comment_delete.html">Profile Wall Comment Delete</a></li>
+<li><a href="profile_wall_form.html">Profile Wall Form</a></li>
+</ul></li>
+<li><p>Status Updates:</p>
+
+<ul>
+<li><a href="status.html">Status</a></li>
+<li><a href="status_delete.html">Status Delete</a></li>
+<li><a href="status_form.html">Status Form</a></li>
+</ul></li>
+<li><p>Groups:</p>
+
+<ul>
+<li><a href="groups.html">Groups</a></li>
+<li><a href="group_add.html">Group Add</a></li>
+<li><a href="group_delete.html">Group Delete</a></li>
+<li><a href="group_entries.html">Group Entries</a></li>
+<li><a href="group_entry_add.html">Group Entry Add</a></li>
+<li><a href="group_form.html">Group Form</a></li>
+<li><a href="group_members.html">Group Members</a></li>
+<li class="current"><a href="member_of_group.html">Member Of Group</a></li>
+<li><a href="group_wall.html">Group Wall</a></li>
+<li><a href="group_wall_comment_delete.html">Group Wall Comment Delete</a></li>
+<li><a href="group_wall_form.html">Group Wall Form</a></li>
+</ul></li>
+<li><p>Messages:</p>
+
+<ul>
+<li><a href="messages.html">Messages</a></li>
+<li><a href="message_delete.html">Message Delete</a></li>
+<li><a href="message_folders.html">Message Folders</a></li>
+<li><a href="message_folder_form.html">Message Folder Form</a></li>
+<li><a href="message_folder_name.html">Message Folder Name</a></li>
+<li><a href="message_form.html">Message Form</a></li>
+<li><a href="message_move.html">Message Move</a></li>
+</ul></li>
+<li><p>Referrals:</p>
+
+<ul>
+<li><a href="referral_invite_form.html">Referral Invite Form</a></li>
+<li><a href="referral_referral_count.html">Referral Count</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<p>The <em>Friends:Member_Of_Group</em> tag is a simple function that
+determines whether or not the currently logged in user is a member of a
+group. It needs to know the group ID or name, so you would typically
+place this loop inside the <a href="groups.html">Friends:Groups</a> loop, or have it grab the group name or ID from the URI.</p>
+
+<pre class="brush: html;">{exp:friends:member_of_group} content {/exp:friends:member_of_group}</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#friends_group_id">friends_group_id</a></li>
+</ul>
+
+<p><a name="friends_group_id"></a></p>
+
+<h3>friends_group_id=</h3>
+
+<pre class="brush: html;">friends_group_id="{friends_group_id}"</pre>
+
+<p>The <em>Friends:Member_Of_Group</em> tag will automatically grab the group
+ID or name from the URI if you have it prepended by group in the URI,
+but this parameter is available to use, should you
+be placing it within the <em>Friends:Group</em> loop.</p>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>The following conditionals are available for use:</p>
+
+<ul>
+<li><a href="#if_member_of_group">if member_of_group</a></li>
+</ul>
+
+<p><a name="if_member_of_group"></a></p>
+
+<h3>if member_of_group</h3>
+
+<pre class="brush: html;">{if member_of_group == "y"}
+    This user is a confirmed member of this group.
+{/if}
+</pre>
+
+<p>This conditional shows its contents if the
+currently logged in user is a confirmed member of the group. This
+conditional contains a value of either <strong>y</strong> (is confirmed member of
+group), or <strong>n</strong> (is NOT confirmed member of group).</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p>The following code shows how this loop might look like in your template:</p>
+
+<pre class="brush: html;">{exp:friends:groups}
+
+    &lt;h3&gt;Group: {friends_group_title}&lt;/h3&gt;
+    &lt;p&gt;{friends_group_description}&lt;/p&gt;
+
+{!-- Begin Member_Of_Group function --}
+
+    {exp:friends:member_of_group
+        friends_group_id="{friends_group_id}"
+    }
+        {if member_of_group == "y"}
+            &lt;p&gt;You are a member of this Group&lt;/p&gt;
+        {/if}
+        {if member_of_group == "n"}
+            &lt;p&gt;Would you like to Joing this Group?
+                &lt;a href="{path='friends/group_add'}/group/{friends_group_id}/"&gt;Click here!&lt;/a&gt;&lt;/p&gt;
+        {/if}
+    {/exp:friends:member_of_group}
+
+{!-- // End Member_Of_Group function --}
+
+{/exp:friends:groups}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

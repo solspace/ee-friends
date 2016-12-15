@@ -1,0 +1,114 @@
+{embed="%prefix%inc/index" page_title="{if logged_in_member_id == "{segment_3}"}My {/if}Profile"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+
+			<h2>Friends</h2>
+
+			<h3>{if logged_in_member_id == "{segment_3}"}My {/if}Profile</h3>
+
+			<p></p>
+
+			{if segment_3}
+
+{embed="%prefix%inc/profile_column"}
+
+			<div id="middlecolumn">
+
+				{exp:friends:members member_id="{segment_3}" limit="1"}
+				{if logged_in_member_id != "{segment_3}" AND friends_reciprocal == "n"}<h5>(Limited Profile - {if friend == "y"}pending invitation){if:else}<a href="{path=%prefix%main/add}/{friends_member_id}/">Add as Friend</a>){/if}</h5>{/if}
+				<h4>{friends_screen_name} {exp:friends:status member_id="{if segment_3}{segment_3}{if:else}CURRENT_USER{/if}" limit="1"}<span>{friends_status}</span>{/exp:friends:status}</h4>
+
+				<hr />
+
+				<h5>Recent Updates:</h5>
+				<ul>
+{embed="%prefix%inc/profile_status_updates" member_id="{friends_member_id}"}
+				</ul>
+
+				<hr />
+
+				<h5>Profile:</h5>
+				<ul>
+{if friends_reciprocal == "y"}
+				<li><label>Birthday:</label> {if friends_bday_m}{friends_birthday format="%F"}{/if} {if friends_bday_d}{friends_bday_d}{/if}{if friends_bday_y AND friends_bday_d}, {/if}{if friends_bday_y}{friends_bday_y}{/if}</li>
+				<li><label>Email:</label> {encode="{friends_email}"}</li>
+				{if friends_url}<li><label>Website:</label> <a href="{friends_url}">{friends_url}</a></li>{/if}
+{/if}
+				<li><label>Location:</label> {friends_location}</li>
+{if segment_3 != logged_in_member_id}{if friends_reciprocal == "y"}
+				<li><label>Occupation:</label> {friends_occupation}</li>
+				<li><label>Interests:</label> {friends_interests}</li>
+				<li><label>Bio:</label><br /> {friends_bio}</li>
+{/if}{/if}
+				</ul>
+
+				<hr />
+
+				<h5>Friends: &nbsp; <a href="{path=%prefix%main/friends}/{friends_member_id}/">View All ({friends_total_reciprocal_friends})</a></h5>
+				{/exp:friends:members}
+				<ul>
+				{exp:friends:mine member_id="{segment_3}" reciprocal="y" limit="5" orderby="screen_name" sort="asc"}
+				<li class="box-style"><a href="{path=%prefix%main/profile}/{friends_member_id}/"><img src="{if friends_avatar_url}{friends_avatar_url}{if:else}{exp:friends:theme_folder_url}code_pack/images/icon_profile.gif{/if}" height="65" width="65" alt="{friends_screen_name}'s photo" /><br /><b>{friends_screen_name}</b></a></li>
+				{if friends_no_results}<li>This user currently has no friends.</li>{/if}
+				{/exp:friends:mine}
+				</ul>
+
+{if segment_3 != logged_in_member_id}
+				<hr />
+
+				<h5>Mutual Friends: &nbsp; <a href="{path=%prefix%main/mutual}/{segment_3}/">View All</a></h5>
+				<ul>
+				{exp:friends:mutual_friends friend_id="{segment_3}" dynamic="off" reciprocal="y" limit="5" orderby="screen_name" sort="asc"}
+				<li class="box-style"><a href="{path=%prefix%main/profile}/{friends_member_id}/"><img src="{if friends_avatar_url}{friends_avatar_url}{if:else}{exp:friends:theme_folder_url}code_pack/images/icon_profile.gif{/if}" height="65" width="65" alt="{friends_screen_name}'s photo" /><br /><b>{friends_screen_name}</b></a></li>
+				{if friends_no_results}<li>You and this user currently have no mutual friends.</li>{/if}
+				{/exp:friends:mutual_friends}
+				</ul>
+{/if}
+
+				<hr />
+
+				<h5>Wall Comments:</h5>
+				{exp:friends:profile_wall friend_id="{segment_3}"}
+					{if friends_no_results}
+						<p>There are currently no comments for this Profile.</p>
+					{/if}
+					<p class="wall">{if logged_in_member_id == friends_member_id OR logged_in_member_id == segment_3 OR logged_in_group_id == "1"}<small style="float:right;"><a href="{path="%prefix%main/delete_profile_comment"}/{friends_comment_id}/">(delete)</a></small>{/if}{friends_comment}<br/>
+					By: {if logged_in_member_id == friends_member_id}<b>You</b>{if:else}<a href="{path='%prefix%main/profile'}/{friends_member_id}/">{friends_screen_name}</a>{/if} on {friends_entry_date format="%F %j, %Y at %h:%i %a"}</p>
+				{/exp:friends:profile_wall}
+
+				<hr />
+
+				<h5>Comment On {if logged_in_member_id != "{segment_3}"}This Friend's{if:else}Your{/if} Wall{if logged_in_member_id != "{segment_3}"} <small>(must be a mutual friend)</small>{/if}:</h5>
+				{exp:friends:profile_wall_form friend_id="{segment_3}"}
+					<p><textarea name="friends_wall_comment" rows="4" cols="40"></textarea></p>
+					<p><input type="submit" value="Comment" name="submit" /></p>
+				{/exp:friends:profile_wall_form}
+			</div>
+
+			{if:else}
+			<h4>Error!</h4><p>You must specify a member ID to view another profile.</p>
+			{/if}
+
+		</div>
+
+		<div id="sidecolumn">
+
+			<h3>About This Page</h3>
+
+			<p>The "Profile" page shows the profile of a given member. Depending on whether or not the given member and the currently logged in user are friends, a full or limited profile will be shown. You can view recent status updates, profile info, the users list of friends, as well as mutual friends. Additionally, a special "Profile" menu on the left is called, which creates a shortcut for sending a private message, a link to view groups they belong to, and the option to Hug them.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/members/">Friends:Members</a> with <b>member_id="&#123;segment_3}"</b> parameter to build most of the profile information</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/status/">Friends:Status</a> to parse the current and previous status updates.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/mine/">Friends:Mine</a> to display a list of the users reciprocal friends.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/mutual_friends/">Friends:Mutual_Friends</a> to display a list of mutual friends between the given user and the currently logged in user.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/hug/">Friends:Hug</a> to allow friends to hug the given user.</li>
+			</ul>
+
+		</div>
+{embed="%prefix%inc/footer"}

@@ -1,0 +1,54 @@
+{embed="%prefix%inc/index" page_title="Messages :: Edit Folders"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Messages :: Edit Folders</h3>
+			
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				<p style="margin: 5px;">Add, Edit or Delete Folders using the form below:</p>
+
+				{exp:friends:message_folder_form return="%prefix%messages"}
+				<ul>
+					{friends_message_folders}
+					<li style="border: none;"><input name="friends_message_folder_id[{friends_message_folder_id}]" value="{friends_message_folder}" /></li>
+					{/friends_message_folders}
+				</ul>
+				<p style="margin: 5px;"><input type="submit" name="submit" value="Submit" /></p>
+				{/exp:friends:message_folder_form}
+
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Edit Folders" page displays a list of all existing message folders and gives the user the option of creating, renaming, or deleting folders. To create a new folder, just type one into the empty field. To rename an existing folder, just type over its name. And to delete a folder, just clear the text field the name is in.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/message_folder_form/">Friends:Message_Folder_Form</a> to output edit form as well as handle success/error messages upon submit.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

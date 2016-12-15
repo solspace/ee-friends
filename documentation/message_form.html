@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Message Form | Friends | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Friends</a></li>
+						<li>Message Form</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="https://solspace.com/expressionengine/friends">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3></li>
+<li><p>Basic:</p>
+
+<ul>
+<li><a href="add.html">Add</a></li>
+<li><a href="form.html">Form</a></li>
+<li><a href="hug.html">Hug</a></li>
+<li><a href="hugs.html">Hugs</a></li>
+<li><a href="invites.html">Invites</a></li>
+<li><a href="members.html">Members</a></li>
+<li><a href="mine.html">Mine</a></li>
+<li><a href="mutual_friends.html">Mutual Friends</a></li>
+</ul></li>
+<li><p>Profile Wall:</p>
+
+<ul>
+<li><a href="profile_wall.html">Profile Wall</a></li>
+<li><a href="profile_wall_comment_delete.html">Profile Wall Comment Delete</a></li>
+<li><a href="profile_wall_form.html">Profile Wall Form</a></li>
+</ul></li>
+<li><p>Status Updates:</p>
+
+<ul>
+<li><a href="status.html">Status</a></li>
+<li><a href="status_delete.html">Status Delete</a></li>
+<li><a href="status_form.html">Status Form</a></li>
+</ul></li>
+<li><p>Groups:</p>
+
+<ul>
+<li><a href="groups.html">Groups</a></li>
+<li><a href="group_add.html">Group Add</a></li>
+<li><a href="group_delete.html">Group Delete</a></li>
+<li><a href="group_entries.html">Group Entries</a></li>
+<li><a href="group_entry_add.html">Group Entry Add</a></li>
+<li><a href="group_form.html">Group Form</a></li>
+<li><a href="group_members.html">Group Members</a></li>
+<li><a href="member_of_group.html">Member Of Group</a></li>
+<li><a href="group_wall.html">Group Wall</a></li>
+<li><a href="group_wall_comment_delete.html">Group Wall Comment Delete</a></li>
+<li><a href="group_wall_form.html">Group Wall Form</a></li>
+</ul></li>
+<li><p>Messages:</p>
+
+<ul>
+<li><a href="messages.html">Messages</a></li>
+<li><a href="message_delete.html">Message Delete</a></li>
+<li><a href="message_folders.html">Message Folders</a></li>
+<li><a href="message_folder_form.html">Message Folder Form</a></li>
+<li><a href="message_folder_name.html">Message Folder Name</a></li>
+<li class="current"><a href="message_form.html">Message Form</a></li>
+<li><a href="message_move.html">Message Move</a></li>
+</ul></li>
+<li><p>Referrals:</p>
+
+<ul>
+<li><a href="referral_invite_form.html">Referral Invite Form</a></li>
+<li><a href="referral_referral_count.html">Referral Count</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x</li>
+<li>PHP 5.2+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<p>The <em>Friends:Message_Form</em> function is part of the Private Messaging
+system and allows your users to send messages to each other.</p>
+
+<pre class="brush: html;">{exp:friends:message_form} content {/exp:friends:message_form}</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#variable_pairs">Variable Pairs</a></li>
+<li><a href="#form_fields">Form Fields</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#notifications">Notification Templates</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#dynamic">dynamic</a></li>
+<li><a href="#friend_id">friend_id</a></li>
+<li><a href="#limit">limit</a></li>
+<li><a href="#message_id">message_id</a></li>
+<li><a href="#notification_template">notification_template</a></li>
+<li><a href="#reciprocal">reciprocal</a></li>
+<li><a href="#reply_email">reply_email</a></li>
+<li><a href="#reply_mode">reply_mode</a></li>
+<li><a href="#forward_mode">forward_mode</a></li>
+<li><a href="#return">return</a></li>
+</ul>
+
+<p><a name="dynamic"></a></p>
+
+<h3>dynamic=</h3>
+
+<pre class="brush: html;">dynamic="off"</pre>
+
+<p>This parameter is available to stop the loop from looking into
+the URI for a member ID or message ID.</p>
+
+<p><a name="friend_id"></a></p>
+
+<h3>friend_id=</h3>
+
+<pre class="brush: html;">friend_id="{segment_3}"</pre>
+
+<p>Instead of using the <a href="#friends_f">friends</a> form field, you can pass
+another users member ID in the URI and capture it into this
+parameter, which would allow your users to send messages to another user
+from clicking a link, etc. You can hardcode a member ID, pass it through
+an embed, or grab it from the URI.</p>
+
+<p><a name="limit"></a></p>
+
+<h3>limit=</h3>
+
+<pre class="brush: html;">limit="150"</pre>
+
+<p>This parameter controls the maximum number of friends or member
+that will show up in the <a href="#friends">friends</a> or <a href="#members">members</a>
+variable pairs. Default is <strong>100</strong>.</p>
+
+<p><a name="message_id"></a></p>
+
+<h3>message_id=</h3>
+
+<pre class="brush: html;">message_id="{segment_3}"</pre>
+
+<p>This parameter is available to accept the ID of a message,
+which is typically used for replying to messages. (See
+<a href="#reply_mode">reply_mode</a>). You would typically grab the message ID
+from the URI.</p>
+
+<p><a name="notification_template"></a></p>
+
+<h3>notification_template=</h3>
+
+<pre class="brush: html;">notification_template="friends_notifications/new_message"</pre>
+
+<p>This parameter controls which EE template to use
+to notify the recipient(s) of the message they received.</p>
+
+<p><a name="reciprocal"></a></p>
+
+<h3>reciprocal=</h3>
+
+<pre class="brush: html;">reciprocal="y"</pre>
+
+<p>This parameter allows you to control whether to show
+reciprocal or "independent" friends results within the
+<a href="#friends">friends</a> variable pair. A <strong>reciprocal</strong> friendship is when both
+members have added each other to their friends lists. An <strong>independant</strong>
+friendship is when a friendship is not confirmed by the other user. The
+default shows both reciprocal and independant friends.</p>
+
+<p><a name="reply_email"></a></p>
+
+<h3>reply_email=</h3>
+
+<pre class="brush: html;">reply_email="no-reply@yoursite.com"</pre>
+
+<p>This parameter allows you to set a no-reply email address to appear in the email notifications sent to the recipient of private messages. The default behaviour uses the senders email address associated with their member account.</p>
+
+<p><a name="reply_mode"></a></p>
+
+<h3>reply_mode=</h3>
+
+<pre class="brush: html;">reply_mode="y"</pre>
+
+<p>This parameter allows you to turn the <em>Message_Form</em> loop
+into a <strong>Reply</strong> form so your users can respond to messages. You would
+typically create a new template for your <strong>Reply</strong> form, and several
+variables become available for use. See <a href="#examples">Examples</a> for more
+information.</p>
+
+<p><a name="forward_mode"></a></p>
+
+<h3>forward_mode=</h3>
+
+<pre class="brush: html;">forward_mode="y"</pre>
+
+<p>This parameter allows you to turn the <em>Message_Form</em>
+loop into a <strong>Forward</strong> form so your users can forward messages to other
+users. You would typically create a new template for your <strong>Forward</strong> form,
+and several variables become available for use. See
+<a href="#examples">Examples</a> for more information.</p>
+
+<p><a name="return"></a></p>
+
+<h3>return=</h3>
+
+<pre class="brush: html;">return="friends/messages"</pre>
+
+<p>This parameter allows you to return the user to a specified
+template upon successful submittal of form.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>The following variables are available for use:</p>
+
+<ul>
+<li><a href="#friends_field_name">friends_FIELD_NAME</a></li>
+<li><a href="#friends_message">friends_message</a></li>
+<li><a href="#friends_message_date">friends_message_date</a></li>
+<li><a href="#friends_message_folder">friends_message_folder</a></li>
+<li><a href="#friends_message_id">friends_message_id</a></li>
+<li><a href="#friends_message_read">friends_message_read</a></li>
+<li><a href="#friends_message_subject">friends_message_subject</a></li>
+<li><a href="#friends_message_time_read">friends_message_time_read</a></li>
+</ul>
+
+<p><a name="friends_field_name"></a></p>
+
+<h3>friends_FIELD_NAME</h3>
+
+<pre class="brush: html;">{friends_FIELD_NAME}</pre>
+
+<p>All <a href="members.html#variables">standard and custom member fields</a> are available for use within the <a href="#notifications">Notification Templates</a>, and be prepended with <em>friends_sender&#95;</em> or <em>friends_recipient&#95;</em>. So to display the screen name of the sender, you would use this construct: <strong>friends_sender&#95;</strong> + <strong>screen_name</strong>.</p>
+
+<p><a name="friends_message"></a></p>
+
+<h3>friends_message</h3>
+
+<pre class="brush: html;">{friends_message}</pre>
+
+<p>This variable outputs the message body for the
+message, and is available for <a href="#reply_mode">Reply Mode</a>.</p>
+
+<p><a name="friends_message_date"></a></p>
+
+<h3>friends_message_date</h3>
+
+<pre class="brush: html;">{friends_message_date format="%l, %F %j, %Y at %g:%i %a"}</pre>
+
+<p>This variable outputs the date for when the
+message was sent, and is available for <a href="#reply_mode">Reply Mode</a>.</p>
+
+<p><a name="friends_message_folder"></a></p>
+
+<h3>friends_message_folder</h3>
+
+<pre class="brush: html;">{friends_message_folder}</pre>
+
+<p>This variable outputs the name of the message
+folder (<strong>Inbox</strong>, <strong>Sent</strong>, etc), and is available for <a href="#reply_mode">Reply
+Mode</a>.</p>
+
+<p><a name="friends_message_id"></a></p>
+
+<h3>friends_message_id</h3>
+
+<pre class="brush: html;">{friends_message_id}</pre>
+
+<p>This variable outputs the unique ID of the
+message, and is available for <a href="#reply_mode">Reply Mode</a>.</p>
+
+<p><a name="friends_message_subject"></a></p>
+
+<h3>friends_message_subject</h3>
+
+<pre class="brush: html;">{friends_message_subject}</pre>
+
+<p>This variable outputs the subject of the message, and
+is available for <a href="#reply_mode">Reply Mode</a>.</p>
+
+<p><a name="friends_message_time_read"></a></p>
+
+<h3>friends_message_time_read</h3>
+
+<pre class="brush: html;">{friends_message_time_read format="%l, %F %j, %Y at %g:%i %a"}</pre>
+
+<p>This variable outputs the date of when the message was read by the current user, and is available for <a href="#reply_mode">Reply Mode</a>.</p>
+
+<p><a name="variable_pairs"></a></p>
+
+<h2>Variable Pairs</h2>
+
+<p>The following variable pairs are available for use:</p>
+
+<ul>
+<li><a href="#friends">friends</a></li>
+<li><a href="#members">members</a></li>
+</ul>
+
+<p><strong>Note:</strong> You cannot use more than 1 variable pair together in the same
+form. They must each be used seperately.</p>
+
+<p><a name="friends"></a></p>
+
+<h3>friends</h3>
+
+<pre class="brush: html;">{friends}{/friends}</pre>
+
+<p>This variable pair allows you to output and control the listing
+of the current user's friends, so they can select them from a list to be
+recipients of a message. This would normally be wrapped around the
+<a href="#f_friend">friend</a> form field as a dropdown or multi-select menu.</p>
+
+<p><a name="members"></a></p>
+
+<h3>members</h3>
+
+<pre class="brush: html;">{members}{/members}</pre>
+
+<p>This variable pair allows you to output and control the listing
+of all members of the site, so they can be selected from a list to be
+recipients of a message. This would normally be wrapped around the
+<a href="#f_friend">friend</a> form field as a dropdown or multi-select menu.</p>
+
+<p><a name="form_fields"></a></p>
+
+<h2>Form Fields</h2>
+
+<p>The following form fields are available for use:</p>
+
+<ul>
+<li><a href="#f_friend">friend</a></li>
+<li><a href="#friends_message">friends_message</a></li>
+<li><a href="#friends_subject">friends_subject</a></li>
+</ul>
+
+<p><a name="friend"></a></p>
+
+<h3>friend[]</h3>
+
+<pre class="brush: html;">&lt;select name="friend[]" multiple="multiple"&gt;
+{friends}
+    &lt;option value="{friends_member_id}"&gt;{friends_screen_name}&lt;/option&gt;
+{/friends}
+&lt;/select&gt;
+</pre>
+
+<p>This form field is where the user would select any friend(s)
+they wish to send a message to. Be sure to specify <em>friend[]</em> as the
+field name so the field can accept multiple user ID's.</p>
+
+<p><a name="friends_message"></a></p>
+
+<h3>friends_message</h3>
+
+<pre class="brush: html;">&lt;textarea name="friends_message"&gt;&lt;/textarea&gt;</pre>
+
+<p>This form field is where the user would enter in a
+subject title for the message they are sending to their friend(s).</p>
+
+<p><a name="friends_subject"></a></p>
+
+<h3>friends_subject</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="friends_subject" /&gt;</pre>
+
+<p>This form field is where the user would enter in a
+subject title for the message they are sending to their friend(s).</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p><a name="composer_form"></a></p>
+
+<h3>Composer Form</h3>
+
+<p>The code below will output a complete Message Form (Composer) for your
+users to send messages to others:</p>
+
+<pre class="brush: html;">&lt;h3&gt;Send a Message&lt;/h3&gt;
+
+{exp:friends:message_form
+    return="friends/messages"
+    notification_template="friends/email_private_message"
+}
+
+    &lt;p&gt;
+        Select Recipients:
+        &lt;select name="friend[]" multiple="multiple"&gt;
+        {friends}
+            &lt;option value="{friends_member_id}"&gt;{friends_screen_name}&lt;/option&gt;
+        {/friends}
+        &lt;/select&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        Subject:
+        &lt;input type"text" name="friends_subject" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        Message:
+        &lt;textarea name="friends_message"&gt;&lt;/textarea&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type="submit" name="submit" value="Send" /&gt;
+    &lt;/p&gt;
+
+{/exp:friends:message_form}
+</pre>
+
+<p><a name="reply_form"></a></p>
+
+<h3>Reply Form</h3>
+
+<p>The code below will output a complete Reply Form for your users to reply
+to messages they receive from others:</p>
+
+<pre class="brush: html;">&lt;h3&gt;Reply to this Message&lt;/h3&gt;
+
+{exp:friends:message_form
+    return="friends/messages"
+    notification_template="friends/email_private_message"
+    reply_mode="y"
+    message_id="{segment_3}"
+}
+
+    &lt;p&gt;
+        Recipients:
+        {friends_message_sender_screen_name}
+        &lt;input type="hidden"
+            name="friend[]"
+            value="{friends_message_sender_member_id}"
+        /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        Subject:
+        &lt;input type"text"
+            name="friends_subject"
+            value="RE: {friends_message_subject}"
+        /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        Message:
+        &lt;textarea name="friends_message"&gt;
+
+            ------- Original Message -------
+            {friends_message}
+        &lt;/textarea&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type="submit" name="submit" value="Reply" /&gt;
+    &lt;/p&gt;
+
+{/exp:friends:message_form}
+</pre>
+
+<p><a name="forward_form"></a></p>
+
+<h3>Forward Form</h3>
+
+<p>The code below will output a complete Forward Form for your users to
+forward messages to other users:</p>
+
+<pre class="brush: html;">&lt;h3&gt;Forward this Message&lt;/h3&gt;
+
+{exp:friends:message_form
+    return="friends/messages"
+    notification_template="friends/email_private_message"
+    forward_mode="y"
+    message_id="{segment_3}"
+}
+
+    &lt;p&gt;
+        Select Recipients:
+        &lt;select name="friend[]" multiple="multiple"&gt;
+        {friends}
+            &lt;option value="{friends_member_id}"&gt;{friends_screen_name}&lt;/option&gt;
+        {/friends}
+        &lt;/select&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        Subject:
+        &lt;input type"text"
+            name="friends_subject"
+            value="FW: {friends_message_subject}"
+        /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        Message:
+        &lt;textarea name="friends_message"&gt;
+
+            ------- Original Message -------
+            {friends_message}
+        &lt;/textarea&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type="submit" name="submit" value="Forward" /&gt;
+    &lt;/p&gt;
+
+{/exp:friends:message_form}
+</pre>
+
+<p><a name="notifications"></a></p>
+
+<h2>Notification Templates</h2>
+
+<p>For your notification template, you use regular EE templates, and just
+add code like this:</p>
+
+<p><a name="example_1"></a></p>
+
+<h3>Example 1 ("friends_notifications/new_message")</h3>
+
+<pre class="brush: html;">Hello {friends_recipient_screen_name}!
+
+You have received a message from
+{friends_sender_screen_name} on the {site_name} website.
+
+To read the message, click here:
+{site_url}/friends/view_message/{friends_message_id}/
+</pre>
+
+<p><a name="example_2"></a></p>
+
+<h3>Example 2 ("friends_notifications/new_message")</h3>
+
+<pre class="brush: html;">Hello {friends_recipient_screen_name}!
+
+You have received a message from
+{friends_sender_screen_name} on the {site_name} website.
+
+Subject: {friends_subject}
+Message:
+{friends_message}
+
+To respond to this message, click here:
+{site_url}/friends/view_message/{friends_message_id}/
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

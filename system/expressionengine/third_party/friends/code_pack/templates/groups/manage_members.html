@@ -1,0 +1,79 @@
+{embed="%prefix%inc/index" page_title="Groups :: Manage Members of &#34;{exp:friends:groups type="owner"}{friends_group_title}{/exp:friends:groups}&#34;"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Groups :: Manage Members</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+				{exp:friends:group_form 
+					return="%prefix%groups/group/{segment_3}/member_update" 
+					notification_approve="%prefix%notifications/group_accept" 
+					subject_approve="{friends_owner_screen_name} has accepted you into their group"
+				}
+				<h4>{friends_group_title}{if friends_group_private == "y"} (private){/if}</h4>
+				<p>{friends_group_description}
+				<input type="hidden" name="friends_group_name" value="{friends_group_name}" />
+				<input type="hidden" name="friends_group_title" value="{friends_group_title}" />
+				<input type="hidden" name="friends_group_description" value="{friends_group_description}" />
+				<input type="hidden" name="friends_group_private" value="{friends_group_private}" /></p>
+				<hr />
+
+				<h5>Approve Requests:</h5>
+				<ul>
+					{requests}
+					<li><input type="checkbox" name="friends_member_id[]" id="{friends_member_id}" value="{friends_member_id}" /> <label for="{friends_member_id}" style="width: auto;">{friends_screen_name}</label></li>
+					{/requests}
+				</ul>
+				<p><input type="submit" name="submit" value="Approve" />
+				{/exp:friends:group_form}  
+				<hr />
+
+				<h5>Remove Existing Members:</h5>
+				{exp:friends:group_form return="%prefix%groups/group/{segment_3}" notification_remove="%prefix%notifications/group_remove" subject_remove="You have been removed from the {friends_group_title} group"}
+				<input type="hidden" name="friends_group_name" value="{friends_group_name}" />
+				<input type="hidden" name="friends_group_title" value="{friends_group_title}" />
+				<input type="hidden" name="friends_group_description" value="{friends_group_description}" />
+				<input type="hidden" name="friends_group_private" value="{friends_group_private}" />
+				<ul>
+					{confirmed}
+					<li><input type="checkbox" name="friends_member_id[]" id="{friends_member_id}" value="{friends_member_id}" /> <label for="{friends_member_id}" style="width: auto;">{friends_screen_name}</label></li>
+					{/confirmed}
+				</ul>
+				<p><input type="hidden" name="friends_remove" value="yes" /><input type="submit" name="submit" value="Remove" />
+				{/exp:friends:group_form}  
+
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Manage Members" page allows the owner/creator of the group to approve member requests to join the group, as well as remove existing confirmed members.</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/group_form/">Friends:Group_Form</a> to display a form for the group owner to approve/invite/remove other users.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

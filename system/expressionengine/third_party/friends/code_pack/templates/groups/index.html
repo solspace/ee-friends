@@ -1,0 +1,53 @@
+{embed="%prefix%inc/index" page_title="Groups List"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Groups List</h3>
+			
+			<p></p>
+			
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				<h5>Below is a list of all existing non-private Groups:</h5>
+
+				<ul>
+					{exp:friends:groups dynamic="off" paginate="bottom" limit="20" type="all_groups"}
+					<li>{exp:friends:member_of_group friends_group_id="{friends_group_id}"}<small style="float: right;">{if logged_in_member_id == friends_group_owner_id}(mine){if:else}{if member_of_group == "y"}(joined {friends_group_join_date format="%F %j, %Y"}){if:else}{if friends_group_join_date}(requested/invited){if:else}<a href="{path="%prefix%groups/add"}/group/{friends_group_id}/">Join?</a>{/if}{/if}{/if}</small>{if member_of_group == "y"}<a href="{path="%prefix%groups/group"}/{friends_group_id}/">{friends_group_title}</a>{if:else}{friends_group_title}{/if}{/exp:friends:member_of_group}</li>
+					{if friends_no_results}<li>Currently no non-private groups exist for this site.</li>{/if}
+					{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+					{/exp:friends:groups}
+				</ul>
+
+			</div>
+			
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Groups List" page is meant to list all groups for the site, excluding private groups by default.</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/groups/">Friends:Groups</a> with <b>type="all_groups"</b> parameter to display a list of all groups for a site.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

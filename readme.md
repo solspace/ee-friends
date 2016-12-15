@@ -1,36 +1,17 @@
-##What is this?
+##Overview
 
-This repository contains supplemental files for the related commercial add-on from [Solspace, Inc.](http://solspace.com). This repository does not contain an [ExpressionEngine](http://http://expressionengine.com) add-on.
+The Friends module takes you a step further towards Social Networking for your website. It allows your users to create and manage lists of friends just like Facebook. Aside from the typical friend request/confirm method, some alternate usages might be to follow other members, only allow "friends" to view your full profile, "bookmark" your favorite authors and subscribe to their channel entries, etc.
 
-After seeing EllisLab release [ExpressionEngine language files](https://github.com/EllisLab/) publicly to customers to translate and submit pull requests, we wanted to do the same for our add-ons. We are making this data available so that end users may fork, adjust, and submit pull requests containing translations or updates. 
- 
+Along with Facebook-esque friends functionality, Friends includes complete private messaging (which works off of native EE private messaging), status updates, comment walls, "hugging", website invites and referral tracking system, and virtual groups where users can create and join groups. In combination with the [User](https://solspace.com/expressionengine/user) addon, the possibilities are endless.
 
-##Using the code in this repo
+Finally, a better way to make friends.
 
-This repository might contain translations and examples that we did deem necessary to include with our standard add-ons download but wanted to leave available to those who need it.
+##Important Notes
 
-To add a language file to your add-on from this repo, download the repo as a zip file, unzip it and copy the desired language folder into `./system/expressionengine/third_party/ADDON_NAME/language/`.
+Friends by [Solspace, Inc.](http://solspace.com) is a discontinued product and is provided here for free to users that wish to still use it.
+**USE OF FRIENDS FROM THIS REPO COMES WITH NO SUPPORT OR GUARANTEE THAT IT WILL WORK. WE WILL NOT UPDATE THIS REPO OR ACCEPT ANY PULL REQUESTS.**
 
-##How to submit translations and updates
+Last ExpressionEngine version known to work on is **EE 2.10.x**
 
-Fork this repository, clone it to your computer, then make any adjustments and push it back to your github account. When you are satisfied with your adjustments, submit a pull request to us and we will discuss with you pulling the changes into our official repo.
-
-##Pull Request Disclaimer
-
-By submitting pull requests with altered or new code to Solspace, Inc., you are agreeing that Solspace, Inc. will retain all copyright to accepted adjustments via pull requests and therefore has permission to redistribute it.
-
-We realize that this sounds very hard-nosed, but we need a legal disclaimer and protective info to mitigate legal issues for either party involved. We love you guys and want it all to work for the best.
-
-##Accuracy Disclaimer
-
-For any accepted translation pull request, we can only trust that the language translation is accurate, since we don't speak all the languages of the world. We apologize for any mistranslated items.
-
-##Release Information
-
-The data here-in is copyright &copy; Solspace, Inc., is not open source, and may not be used other than with the accompanying Solspace add-on. You do not have permission to redistribute or sell any of the data in this repository or any adjusted data from a forked version of this repository.
-
-Due to the nature of the translations and them being completed by third parties, we cannot guarantee their accuracy.
-
-##Acknowledgement
-
-We would like to thank our customers and code submitters for their hard work and patronage. Without you we would not be in business. Thank you. ;)
+Documentation can be found here:
+https://solspace.com/expressionengine/legacy/friends

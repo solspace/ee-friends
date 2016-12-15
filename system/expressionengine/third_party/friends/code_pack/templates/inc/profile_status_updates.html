@@ -1,0 +1,4 @@
+				{exp:friends:status member_id="{embed:member_id}" offset="1" limit="5"}
+				<li>{friends_screen_name} {friends_status} ({friends_status_date format="%F %j, %Y"})</li>
+				{if friends_no_results}<li>Currently has no previous status updates.</li>{/if}
+				{/exp:friends:status}

@@ -1,0 +1,49 @@
+{embed="%prefix%inc/index" page_title="Friend Management"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Friend Management</h3>
+			
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				{exp:friends:add notification_request="%prefix%notifications/friend_request" notification_confirm="%prefix%notifications/friend_confirm" subject_request="{friends_inviter_screen_name} has added you as a Friend!" subject_confirm="{friends_inviter_screen_name} has confirmed you as a Friend!"}
+				{if success}<h4>Successful!</h4>{/if}
+				{if failure}<h4>Error!</h4>{/if}
+				<p>{friends_message}</p>
+				{/exp:friends:add}
+
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Friend Management" page contains the Friends:Add function, which is an all-in-one function to manage friendships. Using this same template and providing different segments in the URI, Friends:Add knows when to make friend requests, confirm friendships, delete friends, block friends, and above all, send out the appropriate email notifications.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/add/">Friends:Add</a> to manage friendship requests/confirms, removals, and blocks.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

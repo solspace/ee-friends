@@ -1,0 +1,42 @@
+{embed="%prefix%inc/index" page_title="Confirm Group Delete"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Confirm Group Delete</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+				{exp:friends:groups type="owner" friends_group_id="{segment_3}"}
+				<h4>Warning! This action cannot be undone!</h4>
+				<p>Are you sure you'd like to delete the group named:<br />"<b>{friends_group_title}</b>"</p>
+				<hr />
+				<h5><a href="{path=%prefix%groups/delete}/{friends_group_id}/">YES, Delete This Group</a> | <a href="{path=%prefix%groups/group}/{friends_group_id}/">CANCEL</a></h5>
+				{/exp:friends:groups}  
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+					
+			<p>The "Confirm Group Delete" page displays a warning to make sure the group owner really wants to delete the group. The confirm page then links to a template with the <a href="https://solspace.com/expressionengine/friends/docs/group_delete/">Friends:Group_Delete</a> function in place. The group ID is simply carried through the 3rd segment.</p>
+		
+		</div>
+{embed="%prefix%inc/footer"}

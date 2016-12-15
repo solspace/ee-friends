@@ -1,0 +1,72 @@
+{embed="%prefix%inc/index" page_title="Messages :: {if segment_2 == ""}Inbox{if:else}{exp:friends:message_folder_name}{friends_message_folder_name}{/exp:friends:message_folder_name}{/if}"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Messages :: {if segment_2 == ""}Inbox{if:else}{exp:friends:message_folder_name}{friends_message_folder_name}{/exp:friends:message_folder_name}{/if}</h3>
+			
+			<p></p>
+			
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+{if segment_3 != "0"}
+			<form method="post" action="{path="%prefix%messages/move"}/">
+{/if}
+{if segment_3 == "0"}
+			<form method="post" action="{path="%prefix%messages/delete"}/">
+{/if}
+				<input type="hidden" name="csrf_token" value="{csrf_token}">
+				<ul class="cut_off">
+					{exp:friends:messages {if segment_2 == ""}message_folder="inbox"{/if} paginate="bottom" limit="20"}
+					<li{if friends_message_read == "n"} class="message_new"{/if}><input type="checkbox" name="friends_message_id[]" value="{friends_message_id}" /> <a href="{path=%prefix%messages/view}/{friends_message_id}">{friends_message_subject}</a> {if friends_message_folder == "Sent"}to {friends_message_recipients backspace="2"}{friends_message_recipient_screen_name}, {/friends_message_recipients}{if:else}from {friends_message_sender}{friends_message_sender_screen_name}{/friends_message_sender}{/if} on {friends_message_date format="%F %j, %Y at %g:%i %a"}</li>
+					{if friends_no_results}<li>You currently have no messages for this folder.</li>{/if}
+					{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+					{/exp:friends:messages}
+				</ul>
+
+{if segment_3 != "0"}
+				<p style="margin: 10px 0 0 5px;">Move Selected Messages to <select name="friends_message_folder_id">
+					{friends_message_folders}
+					<option value="{friends_message_folder_id}" {friends_message_folder_selected}>{friends_message_folder}</option>
+					{/friends_message_folders}
+				</select>
+				<input type="submit" name="submit" value="Move" /></p>
+{/if}
+{if segment_3 == "0"}
+				<p><input type="submit" name="submit" value="Delete Selected Messages?" /></p>
+{/if}
+
+			</form>
+			</div>
+			
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Messages" page displays all private messages for the currently logged in user. Based on the "folder" segments in the URI, it will load messages from different folders, sharing just this one template.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/messages/">Friends:Messages</a> to display private messages for the currently logged in user.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/message_folder_name/">Friends:Message_Folder_Name</a> to dynamicly display the message folder currently being viewed (dependant on URI).</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/message_folders/">Friends:Message_Folders</a> to output a list of all available message folders. Also, <a href="https://solspace.com/expressionengine/friends/docs/message_folders/#examples">Variable Pair</a> version used to construct select menu form for moving multiple messages to another folder.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

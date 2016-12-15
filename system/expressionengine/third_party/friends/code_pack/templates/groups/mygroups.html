@@ -1,0 +1,64 @@
+{embed="%prefix%inc/index" page_title="My Groups"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>My Groups</h3>
+			
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				<h5>Below is a list of all Groups I belong to:</h5>
+
+				<ul>
+					{exp:friends:groups type="confirmed" dynamic="off" paginate="bottom" limit="20"}
+					<li><small style="float: right;">{if logged_in_member_id == friends_group_owner_id}(mine){if:else}(joined {friends_group_join_date format="%F %j, %Y"}){/if}</small><a href="{path=%prefix%groups/group}/{friends_group_id}/">{friends_group_title}</a>{if friends_group_private == "y"} (private){/if}</li>
+					{if friends_no_results}<li>You currently do not belong to any groups.</li>{/if}
+					{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+					{/exp:friends:groups}
+				</ul>
+
+				<h5>You've been invited to the following Groups:</h5>
+
+				<ul>
+					{exp:friends:groups type="invite" dynamic="off" paginate="bottom" limit="20"}
+					<li><small style="float: right;"><a href="{path=%prefix%groups/add}/group/{friends_group_id}/">Accept?</a> (invited {friends_group_join_date format="%F %j, %Y"})</small><a href="{path=%prefix%groups/group}/{friends_group_id}/">{friends_group_title}</a>{if friends_group_private == "y"} (private){/if}</li>
+					{if friends_no_results}<li>You currently having no pending group requests.</li>{/if}
+					{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+					{/exp:friends:groups}
+				</ul>
+
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "My Groups" page is meant to list all groups the currently logged in user belongs to (confirmed membership).</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/groups/">Friends:Groups</a> with <b>type="confirmed"</b> parameter to display a list of all groups the currently logged in user belongs to.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/groups/">Friends:Groups</a> with <b>type="invite"</b> parameter to display a list of all received invites to join new groups.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

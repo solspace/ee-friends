@@ -1,0 +1,52 @@
+{embed="%prefix%inc/index" page_title="{exp:friends:members member_id="{segment_3}" limit="1"}{friends_screen_name}'s &amp; Your Mutual Friends{/exp:friends:members}"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+
+			<h2>Friends</h2>
+
+			<h3>Mutual Friends</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/profile_column"}
+
+			<div id="middlecolumn">
+
+				<h5>The following users are mutual friends of this user and you:</h5>
+				<ul>
+				{exp:friends:mutual_friends friend_id="{segment_3}" dynamic="off" reciprocal="y" orderby="screen_name" sort="asc" limit="15" paginate="bottom"}
+				<li class="forced-height"><img src="{if friends_avatar_url}{friends_avatar_url}{if:else}{exp:friends:theme_folder_url}code_pack/images/icon_profile.gif{/if}" height="35" width="35" alt="{friends_screen_name}'s photo" style="float: left; margin-right: 10px;" /><a href="{path=%prefix%main/profile}/{friends_member_id}/"><b>{friends_screen_name}</b></a><br />{friends_location}</li>
+				{if friends_no_results}<li>You and this user currently have no mutual friends.</li>{/if}
+				{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+				{/exp:friends:mutual_friends}
+				</ul>
+
+			</div>
+
+{/if}
+
+		</div>
+
+		<div id="sidecolumn">
+
+			<h3>About This Page</h3>
+
+			<p>The "Mutual Friends" page shows a list of mutual friends the given user and the currently logged in user have in common.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/mutual_friends/">Friends:Mutual_Friends</a> to display a list of mutual friends between the given user and the currently logged in user.</li>
+			</ul>
+
+		</div>
+{embed="%prefix%inc/footer"}

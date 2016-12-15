@@ -1,0 +1,7 @@
+				<ul>
+					{exp:friends:group_entries friends_group_id="{embed:friends_group_id}" orderby="date" sort="asc" paginate="bottom" limit="20"}
+					<li><a href="{url_title_path=site/comments}">{title}</a></li>
+					{if no_results}<li>This group currently has no entries assigned to it.</li>{/if}
+					{paginate}<li>Page {current_page} of {total_pages} page{if total_pages > "1"}s{/if}{if pagination_links} &nbsp; | &nbsp; {pagination_links}{/if}</li>{/paginate}
+					{/exp:friends:group_entries}
+				</ul>

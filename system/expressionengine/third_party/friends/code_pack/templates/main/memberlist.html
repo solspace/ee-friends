@@ -1,0 +1,55 @@
+{embed="%prefix%inc/index" page_title="Member List"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+
+			<h2>Friends</h2>
+
+			<h3>Memberlist</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/guest_column"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+{/if}
+
+			<div id="middlecolumn">
+
+				<h5>Click on a member below to add them to your Friends list. Click on the letters below to filter the list by Screen Names that begin with that letter:</h5>
+				<hr />
+				<p><a href="{path='%prefix%main/memberlist'}/screen_name/a/">A</a> <a href="{path='%prefix%main/memberlist'}/screen_name/b/">B</a> <a href="{path='%prefix%main/memberlist'}/screen_name/c/">C</a> <a href="{path='%prefix%main/memberlist'}/screen_name/d/">D</a> <a href="{path='%prefix%main/memberlist'}/screen_name/e/">E</a> <a href="{path='%prefix%main/memberlist'}/screen_name/f/">F</a> <a href="{path='%prefix%main/memberlist'}/screen_name/g/">G</a> <a href="{path='%prefix%main/memberlist'}/screen_name/h/">H</a> <a href="{path='%prefix%main/memberlist'}/screen_name/i/">I</a> <a href="{path='%prefix%main/memberlist'}/screen_name/j/">J</a> <a href="{path='%prefix%main/memberlist'}/screen_name/k/">K</a> <a href="{path='%prefix%main/memberlist'}/screen_name/l/">L</a> <a href="{path='%prefix%main/memberlist'}/screen_name/m/">M</a> <a href="{path='%prefix%main/memberlist'}/screen_name/n/">N</a> <a href="{path='%prefix%main/memberlist'}/screen_name/o/">O</a> <a href="{path='%prefix%main/memberlist'}/screen_name/p/">P</a> <a href="{path='%prefix%main/memberlist'}/screen_name/q/">Q</a> <a href="{path='%prefix%main/memberlist'}/screen_name/r/">R</a> <a href="{path='%prefix%main/memberlist'}/screen_name/s/">S</a> <a href="{path='%prefix%main/memberlist'}/screen_name/t/">T</a> <a href="{path='%prefix%main/memberlist'}/screen_name/u/">U</a> <a href="{path='%prefix%main/memberlist'}/screen_name/v/">V</a> <a href="{path='%prefix%main/memberlist'}/screen_name/w/">W</a> <a href="{path='%prefix%main/memberlist'}/screen_name/x/">X</a> <a href="{path='%prefix%main/memberlist'}/screen_name/y/">Y</a> <a href="{path='%prefix%main/memberlist'}/screen_name/z/">Z</a> &nbsp; <a href="{path='%prefix%main/memberlist'}/screen_name/0/">0</a> <a href="{path='%prefix%main/memberlist'}/screen_name/1/">1</a> <a href="{path='%prefix%main/memberlist'}/screen_name/2/">2</a> <a href="{path='%prefix%main/memberlist'}/screen_name/3/">3</a> <a href="{path='%prefix%main/memberlist'}/screen_name/4/">4</a> <a href="{path='%prefix%main/memberlist'}/screen_name/5/">5</a> <a href="{path='%prefix%main/memberlist'}/screen_name/6/">6</a> <a href="{path='%prefix%main/memberlist'}/screen_name/7/">7</a> <a href="{path='%prefix%main/memberlist'}/screen_name/8/">8</a> <a href="{path='%prefix%main/memberlist'}/screen_name/9/">9</a>
+				<hr />
+				<ul>
+					{exp:friends:members orderby="screen_name" sort="asc" limit="20" paginate="bottom"}
+					<li class="forced-height">{if friends_member_id != logged_in_member_id}<small style="float: right;">{if friend == "y"}{if friends_reciprocal == "y"}(already friends){if:else}(invited){/if}{if:else}<a href="{path=%prefix%main/add}/{friends_member_id}/">Add to Friends</a>{/if}</small>{/if}<img src="{if friends_avatar_url}{friends_avatar_url}{if:else}{exp:friends:theme_folder_url}code_pack/images/icon_profile.gif{/if}" height="35" width="35" alt="{friends_screen_name}'s photo" style="float: left; margin-right: 10px;" /><a href="{path=%prefix%main/profile}/{friends_member_id}/"><b>{friends_screen_name}</b></a><br />{friends_location}</li>
+					{if friends_no_results}<li>This site currently has no members available.</li>{/if}
+					{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+					{/exp:friends:members}
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div id="sidecolumn">
+
+			<h3>About This Page</h3>
+
+			<p>The "Members" page is meant to show all members of the site. You can further filter this list of members by member group ID, etc.</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/members/">Friends:Members</a> to display a list of all site members.</li>
+			</ul>
+
+		</div>
+{embed="%prefix%inc/footer"}

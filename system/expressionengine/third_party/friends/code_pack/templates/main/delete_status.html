@@ -1,0 +1,46 @@
+{embed="%prefix%inc/index" page_title="Delete a Status"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Delete a Status</h3>
+			
+			<p></p>
+
+{embed="%prefix%inc/profile_column"}
+
+			<div id="middlecolumn">
+
+{if logged_in}
+				{exp:friends:status_delete}
+				{if success}<h4>Successful!</h4>{/if}
+				{if failure}<h4>Error!</h4>{/if}
+				<p style="margin: 10px 0 0 5px;">{friends_message}</p>
+				{/exp:friends:status_delete}
+{if:else}
+				<h4>Error!</h4>
+				<p style="margin: 10px 0 0 5px;">You must be logged in to delete a status.</p>
+{/if}
+
+			</div>
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Status Delete" page allows you to delete one of your statuses. You can pass a status id in the URI or you can hard code it using the 'status_id' template parameter</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/status_delete/">Friends:Status_delete</a> to delete a status.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

@@ -1,0 +1,64 @@
+{embed="%prefix%inc/index" page_title="Viewing Message"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Viewing Message</h3>
+			
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+				{exp:friends:messages text_format="br"}
+				<h4 style="margin: 6px 0;">Subject: {friends_message_subject}</h4>
+				<p>Sent: {friends_message_date format="%F %j, %Y at %g:%i %a"}</p>
+				<p>From: {friends_message_sender}<a href="{path=%prefix%main/profile}/{friends_message_sender_member_id}/">{friends_message_sender_screen_name}</a>{/friends_message_sender}</p>
+				<p>Recipients: {friends_message_recipients backspace="2"}<a href="{path=%prefix%main/profile}/{friends_message_recipient_member_id}/">{friends_message_recipient_screen_name}</a>, {/friends_message_recipients}</p>
+				<hr />
+				<p>{friends_message}</p>
+				<hr />
+				{if friends_no_results}<p>The message you're looking for does not exist or cannot be found.</p>{/if}
+
+			<form method="post" action="{path="%prefix%messages/move"}/{segment_3}/">
+				<input type="hidden" name="csrf_token" value="{csrf_token}">
+				<p><a href="{path="%prefix%messages/reply"}/{friends_message_id}/">REPLY</a> | <a href="{path="%prefix%messages/forward"}/{friends_message_id}/">FORWARD</a> | 
+				{/exp:friends:messages}
+				<select name="friends_message_folder_id">
+					{friends_message_folders}
+					<option value="{friends_message_folder_id}" {friends_message_folder_selected}>{friends_message_folder}</option>
+					{/friends_message_folders}
+				</select>
+				<input type="submit" name="submit" value="Move" /></p>
+			</form>
+			</div>
+
+{/if}
+
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Message View" page displays a selected private message in full/detailed view.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/messages/">Friends:Messages</a> to display the individual private message.</li>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/message_folders/">Friends:Message_Folders</a> - variable pair version used to construct select menu form for moving the message to another folder.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

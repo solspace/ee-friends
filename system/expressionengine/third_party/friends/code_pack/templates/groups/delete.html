@@ -1,0 +1,51 @@
+{embed="%prefix%inc/index" page_title="Group Deleted"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Group Deleted</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+				{exp:friends:group_delete}
+				{if success}
+				<h4>Successful!</h4>
+				{/if}
+				{if failure}
+				<h4>Error!</h4>
+				{/if}
+				<p>{friends_message}</p>
+				{/exp:friends:group_delete}  
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Group Delete" page displays a success/failure message based on whether or not the group was successfully deleted.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/group_delete/">Friends:Group_Delete</a> to handle the functionality for deleting a group(s).</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

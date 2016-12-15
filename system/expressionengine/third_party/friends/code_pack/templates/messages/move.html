@@ -1,0 +1,49 @@
+{embed="%prefix%inc/index" page_title="Messages :: Move"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Messages :: Move</h3>
+			
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				{exp:friends:message_move}
+				{if success}<h4>Successful!</h4>{/if}
+				{if failure}<h4>Error!</h4>{/if}
+				<p style="margin: 10px 0 0 5px;">{friends_message}</p>
+				{/exp:friends:message_move}
+
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Message Move" page displays a success/failure message based on whether or not the private message was successfully moved.</p>
+
+			<p>It makes use of the following functions:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/message_move/">Friends:Message_Move</a> to handle the functionality for moving a message or messages from one folder to another.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

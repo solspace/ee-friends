@@ -1,0 +1,7 @@
+				<ul>
+					{exp:friends:group_members friends_group_id="{embed:friends_group_id}" type="confirmed" orderby="screen_name" sort="asc" paginate="bottom" limit="20"}
+					<li><small style="float:right;">(Confirmed on {friends_group_join_date format="%F %j, %Y"})</small><a href="{path=%prefix%main/profile}/{friends_member_id}/">{friends_screen_name}</a></li>
+					{if friends_no_results}<li>This group currently does not have any confirmed members.</li>{/if}
+					{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+					{/exp:friends:group_members}
+				</ul>

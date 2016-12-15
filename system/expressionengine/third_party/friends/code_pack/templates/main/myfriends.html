@@ -1,0 +1,52 @@
+{embed="%prefix%inc/index" page_title="My Friends"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+
+			<h2>Friends</h2>
+
+			<h3>My Friends</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				<h5>The following users are confirmed friends of yours:</h5>
+				<ul>
+				{exp:friends:mine reciprocal="y" orderby="screen_name" sort="asc" limit="20" paginate="bottom"}
+				<li class="forced-height"><small style="float: right;"><a href="{path=%prefix%main/hug}/{friends_member_id}/">Hug</a> | <a href="{path=%prefix%main/add}/{friends_member_id}/delete/">Remove Friend?</a></small><img src="{if friends_avatar_url}{friends_avatar_url}{if:else}{exp:friends:theme_folder_url}code_pack/images/icon_profile.gif{/if}" height="35" width="35" alt="{friends_screen_name}'s photo" style="float: left; margin-right: 10px;" /><a href="{path=%prefix%main/profile}/{friends_member_id}/"><b>{friends_screen_name}</b></a><br />{friends_location}</li>
+				{if friends_no_results}<li>You currently have no friends.</li>{/if}
+				{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+				{/exp:friends:mine}
+				</ul>
+
+			</div>
+
+{/if}
+
+		</div>
+
+		<div id="sidecolumn">
+
+			<h3>About This Page</h3>
+
+			<p>The "My Friends" page displays the currently logged in users list of friends. In this case, it's currently showing a list of all reciprocal friends (confirmed on both ends).</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/mine/">Friends:Mine</a> with <b>reciprocal="y"</b> parameter to display all reciprocal friends.</li>
+			</ul>
+
+		</div>
+{embed="%prefix%inc/footer"}

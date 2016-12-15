@@ -1,0 +1,52 @@
+{embed="%prefix%inc/index" page_title="My Friends Statuses"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>My Friends Statuses</h3>
+			
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				<h4>A List of My Friends Recent Statuses:</h4>
+				<ul>
+				{exp:friends:status limit="15" paginate="bottom"}
+				<li><a href="{path=%prefix%main/profile}/{friends_member_id}/">{friends_screen_name}</a>: {friends_status} ({friends_status_date format="%F %j, %Y"})</li>
+				{if friends_no_results}<li>There is currently no status updates from your friends.</li>{/if}
+				{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+				{/exp:friends:status}
+				</ul> 
+
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "My Friends Statuses" page displays status updates from all friends of the currently logged in user. Any private status updates from users that are NOT reciprocal friends will be excluded.</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/status/">Friends:Status</a> WITHOUT <b>member_id=""</b> parameter, so it displays all friends' statuses.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

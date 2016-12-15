@@ -1,0 +1,53 @@
+{embed="%prefix%inc/index" page_title="Manage Groups"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Manage Groups</h3>
+			
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+
+				<h5>Below is a list of all Groups I created:</h5>
+
+				<ul>
+					{exp:friends:groups member_id="{segment_3}" type="owner" dynamic="off" paginate="bottom" limit="20"}
+					<li><small style="float: right;"><a href="{path=%prefix%groups/update}/{friends_group_id}/">Update</a> | <a href="{path=%prefix%groups/manage_members}/{friends_group_id}/">Manage Members</a></small><a href="{path=%prefix%groups/group}/{friends_group_id}/">{friends_group_title}</a>{if friends_group_private == "y"} (private){/if}</li>
+					{if friends_no_results}<li>You currently do not own any groups.</li>{/if}
+					{friends_paginate}<li>Page {friends_current_page} of {friends_total_pages} page{if friends_total_pages > "1"}s{/if}{if friends_pagination_links} &nbsp; | &nbsp; {friends_pagination_links}{/if}</li>{/friends_paginate}
+					{/exp:friends:groups}
+				</ul>
+
+			</div>
+
+{/if}
+		
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Manage Groups" page displays a list of all groups the currently logged in user is the owner of. This page is assembled to allow the user to edit existing groups and manage their members and requests to join the group.</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/groups/">Friends:Groups</a> with <b>type="owner"</b> parameter to display a list of all groups the currently logged in user owns.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

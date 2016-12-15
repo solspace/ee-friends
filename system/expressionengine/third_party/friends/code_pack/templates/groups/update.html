@@ -1,0 +1,56 @@
+{embed="%prefix%inc/index" page_title="Update Group"}
+</head>
+<body id="home">
+{embed="%prefix%inc/header"}
+
+		<div id="maincolumn">
+		
+			<h2>Friends</h2>
+			
+			<h3>Update Group</h3>
+
+			<p></p>
+
+{if logged_out}
+
+{embed="%prefix%inc/login"}
+
+{if:else}
+		
+{embed="%prefix%inc/control_column"}
+
+			<div id="middlecolumn">
+				{exp:friends:group_form return="%prefix%groups/group/{segment_3}/updated" notification_invite="%prefix%notifications/group_invite" subject_invite="{friends_owner_screen_name} would like you to join their group"}
+				<p>Group Name: <input type="text" name="friends_group_name" value="{friends_group_name}" style="width: 450px;" /></p>
+				<p>Group Title: <input type="text" name="friends_group_title" value="{friends_group_title}" style="width: 450px;" /></p>
+				<p>Group Description:<br /><textarea name="friends_group_description" rows="10" cols="50" style="width: 450px; height: 200px;">{friends_group_description}</textarea></p>
+				<p>Is this Group Private? <input type="radio" name="friends_group_private" id="friends_group_private_yes" value="y" {if friends_group_private == "y"}checked="checked"{/if} /> <label for="friends_group_private_yes">Yes</label>&nbsp;&nbsp;&nbsp;<input type="radio" name="friends_group_private" id="friends_group_private_no" value="n" {if friends_group_private == "n"}checked="checked"{/if} /> <label for="friends_group_private_no">No</label></p>
+				<hr />
+				<p><input type="submit" name="submit" value="Update Group" style="float:left; margin-right: 10px;" />
+				{/exp:friends:group_form}
+
+				<form method="post" action="{path="%prefix%groups/delete_confirm"}/{segment_3}/">
+					<input type="hidden" name="csrf_token" value="{csrf_token}">
+					<input type="submit" name="submit" value="Delete Group?" /></p>
+				</form>
+
+			</div>
+		
+{/if}
+
+		</div>
+		
+		<div id="sidecolumn">
+		
+			<h3>About This Page</h3>
+			
+			<p>The "Update Group" page allows the owner/creator of the group to edit/update the group details, as well as delete the group altogether.</p>
+
+			<p>It makes use of the following function:</p>
+
+			<ul>
+				<li><a href="https://solspace.com/expressionengine/friends/docs/group_form/">Friends:Group_Form</a> to display a form for the group owner to update the group details.</li>
+			</ul>
+		
+		</div>
+{embed="%prefix%inc/footer"}

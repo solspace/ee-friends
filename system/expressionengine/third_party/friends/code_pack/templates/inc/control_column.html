@@ -1,0 +1,41 @@
+			<div id="leftcolumn">
+
+				<h4>Account</h4>
+
+				<ul class="bottom-border">
+					<li{if segment_1 == "%prefix%main" AND segment_2 == ""} class="selected"{/if}><a href="{path=%prefix%main}/">Dashboard</a></li>
+					<li{if segment_2 == "profile"} class="selected"{/if}><a href="{path=%prefix%main/profile}/{logged_in_member_id}/">My Profile</a></li>
+					<li><a href="{path=member/profile}/">Edit Profile</a></li>
+					{exp:friends:members member_id="CURRENT_USER" dynamic="off" limit="1"}
+					<li{if segment_2 == "myfriends"} class="selected"{/if}><a href="{path=%prefix%main/myfriends}/">My Friends ({friends_total_reciprocal_friends})</a></li>
+					{/exp:friends:members}
+					<li{if segment_2 == "friends_statuses"} class="selected"{/if}><a href="{path=%prefix%main/friends_statuses}/">Friends Statuses</a></li>
+					<li{if segment_2 == "requests"} class="selected"{/if}><a href="{path=%prefix%main/requests}/">Friend Requests</a></li>
+					<li{if segment_2 == "invite"} class="selected"{/if}><a href="{path=%prefix%main/invite}/">Invite New Friends</a></li>
+					<li{if segment_2 == "memberlist"} class="selected"{/if}><a href="{path=%prefix%main/memberlist}/">Member List</a></li>
+				</ul>
+
+				<h4>Messages</h4>
+
+				<ul class="bottom-border">
+					<li{if segment_2 == "compose"} class="selected"{/if}><a href="{path=%prefix%messages/compose}/">Compose New</a></li>
+					<li>
+						<ul>
+					{exp:friends:message_folders}
+							<li{if segment_2 == "folder" AND segment_3 == friends_message_folder_id} class="selected"{/if}{if segment_1 == "%prefix%messages" AND segment_2 == "" AND friends_message_folder_id == "1"} class="selected"{/if}>- <a href="{path=%prefix%messages/folder}/{friends_message_folder_id}/">{if friends_message_folder_id == "1"}<b>{/if}{friends_message_folder}{if friends_message_folder_id == "1"}</b>{/if}{if friends_message_folder_id != "2"}{if friends_message_folder_unread_count > "0"} ({friends_message_folder_unread_count} new){/if}{/if}</a></li>
+					{/exp:friends:message_folders}
+						</ul>
+					</li>
+					<li{if segment_2 == "edit_folders"} class="selected"{/if}><a href="{path=%prefix%messages/edit_folders}/">Edit Folders</a></li>
+				</ul>
+
+				<h4>Groups</h4>
+
+				<ul>
+					<li{if segment_2 == "mygroups"} class="selected"{/if}><a href="{path=%prefix%groups/mygroups}/">My Groups</a></li>
+					<li{if segment_2 == "create"} class="selected"{/if}><a href="{path=%prefix%groups/create}/">Create New Group</a></li>
+					<li{if segment_2 == "manage"} class="selected"{/if}><a href="{path=%prefix%groups/manage}/">Manage Groups</a></li>
+					<li{if segment_1 == "%prefix%groups" AND segment_2 == ""} class="selected"{/if}><a href="{path=%prefix%groups}/">Groups List</a></li>
+				</ul>
+
+			</div>
